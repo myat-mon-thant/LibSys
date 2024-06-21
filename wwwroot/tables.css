@@ -1,0 +1,36 @@
+.table-responsive {
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;
+}
+.table tbody {
+    color: white;
+    background-color: #4682B4;
+}
+.table thead {
+    background-color: #4682B4; /* Dark sky blue */
+    color: white;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 2px solid black !important;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #4682B4;
+    z-index: 1;
+}
+
+.btn-add {
+    background-color: white;
+    color: deepskyblue;
+    border-color: #007bff;
+}
+
+    .btn-add:hover {
+        background-color: skyblue;
+        color: white;
+        border-color: skyblue;
+    }

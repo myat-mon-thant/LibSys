@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="tables.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: skyblue;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div style="color: deepskyblue; font-weight: bold;" class="container">
+            <h2 class="navbar-brand">Book</h2>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="booklist.html">Book List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="authorlist.html">Author List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="category.html">Category</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <form id="bookForm">
+            <div class="form-group">
+                <label style="font-weight:bold;" for="book-title">Book Title</label>
+                <input type="text" class="form-control" id="book-title" placeholder="Enter book title">
+            </div>
+            <div class="form-group">
+                <label style="font-weight:bold;" for="book-author">Author</label>
+                <select class="form-control" id="book-author"></select>
+            </div>
+            <div class="form-group">
+                <label style="font-weight:bold;" for="book-category">Category</label>
+                <select class="form-control" id="book-category"></select>
+            </div>
+            <div class="form-group">
+                <label style="font-weight:bold;" for="publicationDate">Publication Date</label>
+                <input type="date" class="form-control" id="publicationDate" placeholder="Enter Publication Date">
+            </div>
+            <div class="form-group">
+                <label style="font-weight:bold;" for="price">Price</label>
+                <input type="text" class="form-control" id="price" placeholder="Enter book price">
+            </div>
+            <button type="submit" class="btn btn-add" onclick="addBook()">Submit</button>
+        </form>
+        <div class="table-responsive">
+            <table id="books" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Publication Date</th>
+                        <th scope="col">Price</th>
+
+                    </tr>
+                </thead>
+                <tbody id="booksTable"></tbody>
+            </table>
+        </div>
+        </div>
+        <script src="scripts.js"></script>
+</body>
+</html>

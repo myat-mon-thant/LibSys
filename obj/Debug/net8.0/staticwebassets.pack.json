@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\authorlist.html",
+      "PackagePath": "staticwebassets\\authorlist.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\booklist.html",
+      "PackagePath": "staticwebassets\\booklist.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\category.html",
+      "PackagePath": "staticwebassets\\category.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\home.html",
+      "PackagePath": "staticwebassets\\home.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\homepage.jpg",
+      "PackagePath": "staticwebassets\\homepage.jpg"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\homepage2.jpg",
+      "PackagePath": "staticwebassets\\homepage2.jpg"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\indexpage.jpg",
+      "PackagePath": "staticwebassets\\indexpage.jpg"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\scripts.js",
+      "PackagePath": "staticwebassets\\scripts.js"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\styles.css",
+      "PackagePath": "staticwebassets\\styles.css"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\tables.css",
+      "PackagePath": "staticwebassets\\tables.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Lib2.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Lib2.props",
+      "PackagePath": "build\\Lib2.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Lib2.props",
+      "PackagePath": "buildMultiTargeting\\Lib2.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Lib2.props",
+      "PackagePath": "buildTransitive\\Lib2.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
