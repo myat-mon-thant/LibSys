@@ -24,6 +24,14 @@
         .nav-link:hover {
             background-color: skyblue;
         }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 5px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -48,10 +56,11 @@
     </nav>
     <div class="container mt-3">
         <h2 class="text-light">Author List</h2>
-        <button type="button" class="btn btn-outline-light btn-add" onclick="showAddAuthorForm()">Add Author</button>
+        <button type="button" class="btn btn-add" onclick="showAddAuthorForm()">Add Author</button>
         <div id="add-author-form" style="display: none">
             <input type="text" id="author-name" class="form-control" placeholder="Author Name" />
             <button type="button" class="btn btn-outline-light mt-2 btn-add" onclick="addAuthor()">Add</button>
+            <button type="button" class="btn btn-outline-light mt-2" onclick="cancelAddAuthor()">Cancel</button>
         </div>
         <div class="table-responsive">
             <table id="authors" class="table">
@@ -59,14 +68,21 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">Status</th>
                         <!-- <th scope="col">Action</th> -->
                     </tr>
                 </thead>
                 <tbody id="authors-table-body"></tbody>
             </table>
         </div>
-       
+
     </div>
+    <footer class="footer bg-light">
+        <div class="container">
+            <p>&copy; 2024 Library Management System By MMT &#128218;</p>
+        </div>
+    </footer>
     <script src="scripts.js"></script>
 </body>
 </html>

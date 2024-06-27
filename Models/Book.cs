@@ -17,6 +17,10 @@ public partial class Book
 
     public int? Price { get; set; }
 
+    public string Status { get; set; } = null!;
+
+    public DateTime CreatedDate { get; set; }
+
     public virtual Author Author { get; set; } = null!;
 
     public virtual Category Category { get; set; } = null!;

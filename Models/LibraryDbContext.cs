@@ -35,7 +35,13 @@ public partial class LibraryDbContext : DbContext
 
             entity.HasIndex(e => e.Name, "UQ__Author__737584F6293380CB").IsUnique();
 
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasDefaultValue("Active");
         });
 
         modelBuilder.Entity<Book>(entity =>
@@ -44,7 +50,13 @@ public partial class LibraryDbContext : DbContext
 
             entity.ToTable("Book");
 
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
             entity.Property(e => e.PublicationDate).HasColumnType("datetime");
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasDefaultValue("Active");
             entity.Property(e => e.Title).HasMaxLength(255);
 
             entity.HasOne(d => d.Author).WithMany(p => p.Books)
@@ -66,7 +78,13 @@ public partial class LibraryDbContext : DbContext
 
             entity.HasIndex(e => e.Name, "UQ__Category__737584F6AC179DC5").IsUnique();
 
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasDefaultValue("Active");
         });
 
         OnModelCreatingPartial(modelBuilder);

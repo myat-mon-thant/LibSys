@@ -237,6 +237,7 @@ C:\Library\Lib2\obj\Debug\net8.0\Lib2.AssemblyInfo.cs
 C:\Library\Lib2\obj\Debug\net8.0\Lib2.csproj.CoreCompileInputs.cache
 C:\Library\Lib2\obj\Debug\net8.0\Lib2.MvcApplicationPartsAssemblyInfo.cs
 C:\Library\Lib2\obj\Debug\net8.0\Lib2.MvcApplicationPartsAssemblyInfo.cache
+C:\Library\Lib2\obj\Debug\net8.0\Lib2.sourcelink.json
 C:\Library\Lib2\obj\Debug\net8.0\staticwebassets.build.json
 C:\Library\Lib2\obj\Debug\net8.0\staticwebassets.development.json
 C:\Library\Lib2\obj\Debug\net8.0\staticwebassets\msbuild.Lib2.Microsoft.AspNetCore.StaticWebAssets.props

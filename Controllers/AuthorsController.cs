@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lib2.Models;
+using Lib2.DTO;
 
 namespace Lib2.Controllers
 {
@@ -24,7 +25,7 @@ namespace Lib2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
-            return await _context.Authors.ToListAsync();
+            return await _context.Authors.Where(a=> a.Status == "Active" || a.Status == "Edit").ToListAsync();
         }
 
         // GET: api/Authors/5
@@ -33,7 +34,8 @@ namespace Lib2.Controllers
         {
             var author = await _context.Authors.FindAsync(id);
 
-            if (author == null)
+
+            if (author == null || author.Status != "Active" && author.Status != "Edit")
             {
                 return NotFound();
             }
@@ -41,21 +43,33 @@ namespace Lib2.Controllers
             return author;
         }
 
+       
+
         // PUT: api/Authors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAuthor(int id, Author author)
+        public async Task<IActionResult> PutAuthor(int id, AuthorDto authorDto)
         {
-            if (id != author.Id)
+            // Find the author in the database
+            var author = await _context.Authors.FindAsync(id);
+            if (author == null)
             {
-                return BadRequest();
+                return NotFound();
             }
-
-            _context.Entry(author).State = EntityState.Modified;
 
             try
             {
+                // Update the author object with the values from the authorDto
+                author.Name = authorDto.Name;
+
+                // Set the author status to "Active" since it's being edited
+                author.Status = "Edit";
+
+                // Update the author in the database
+                _context.Authors.Update(author);
                 await _context.SaveChangesAsync();
+
+                return NoContent();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -68,22 +82,26 @@ namespace Lib2.Controllers
                     throw;
                 }
             }
-
-            return NoContent();
         }
 
+
+     
         // POST: api/Authors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Author>> PostAuthor(Author author)
+        public async Task<ActionResult<AuthorDto>> PostAuthor(AuthorDto authorDto)
+        
         {
-            if (author == null || string.IsNullOrWhiteSpace(author.Name))
+            if (authorDto == null || string.IsNullOrWhiteSpace(authorDto.Name))
             {
                 return BadRequest("Author data is invalid. Name cannot be empty.");
             }
 
             else
             {
+                var author = new Author{
+                    Name = authorDto.Name
+                };
                 _context.Authors.Add(author);
                 await _context.SaveChangesAsync();
 
@@ -102,7 +120,9 @@ namespace Lib2.Controllers
                 return NotFound();
             }
 
-            _context.Authors.Remove(author);
+            //soft delete
+            author.Status = "Delete";
+            _context.Entry(author).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();

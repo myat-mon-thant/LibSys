@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: skyblue;">
+    <div class="container">
+        <h2 class="mt-4">Edit Book</h2>
+        <form id="editBookForm">
+            <div class="form-group">
+                <label for="book-title">Book Title</label>
+                <input type="text" id="book-title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="book-author">Author</label>
+                <select id="book-author" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+                <label for="book-category">Category</label>
+                <select id="book-category" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+                <label for="book-publication-date">Publication Date</label>
+                <input type="date" id="book-publication-date" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="book-price">Price</label>
+                <input type="number" id="book-price" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Save</button>
+            <button type="button" class="btn btn-outline-danger" onclick="cancelEditBook()">Cancel</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+   
+</body>
+</html>

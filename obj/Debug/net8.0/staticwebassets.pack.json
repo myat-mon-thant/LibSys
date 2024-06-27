@@ -9,8 +9,28 @@
       "PackagePath": "staticwebassets\\booklist.html"
     },
     {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\booklogo.jpg",
+      "PackagePath": "staticwebassets\\booklogo.jpg"
+    },
+    {
       "Id": "C:\\Library\\Lib2\\wwwroot\\category.html",
       "PackagePath": "staticwebassets\\category.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\detail.html",
+      "PackagePath": "staticwebassets\\detail.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\edit.html",
+      "PackagePath": "staticwebassets\\edit.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\editAuthor.html",
+      "PackagePath": "staticwebassets\\editAuthor.html"
+    },
+    {
+      "Id": "C:\\Library\\Lib2\\wwwroot\\editCategory.html",
+      "PackagePath": "staticwebassets\\editCategory.html"
     },
     {
       "Id": "C:\\Library\\Lib2\\wwwroot\\home.html",
