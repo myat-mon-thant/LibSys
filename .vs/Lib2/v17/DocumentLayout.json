@@ -7,24 +7,48 @@
       "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\scripts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\authorlist.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\authorlist.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\booklist.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\booklist.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\category.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\category.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\indexpage.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\indexpage.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\authorlist.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\authorlist.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\booklogo.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\booklogo.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\dto\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:dto\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\editauthor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\editauthor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,32 +58,131 @@
       "DocumentGroups": [
         {
           "DockedWidth": 201,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Library\\Lib2\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Library\\Lib2\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T06:29:42.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "authorlist.html",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\authorlist.html",
+              "RelativeDocumentMoniker": "wwwroot\\authorlist.html",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\authorlist.html",
+              "RelativeToolTip": "wwwroot\\authorlist.html",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAFcAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-22T05:30:12.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CategoryDto.cs",
+              "DocumentMoniker": "C:\\Library\\Lib2\\DTO\\CategoryDto.cs",
+              "RelativeDocumentMoniker": "DTO\\CategoryDto.cs",
+              "ToolTip": "C:\\Library\\Lib2\\DTO\\CategoryDto.cs",
+              "RelativeToolTip": "DTO\\CategoryDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T08:45:55.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookDto.cs",
+              "DocumentMoniker": "C:\\Library\\Lib2\\DTO\\BookDto.cs",
+              "RelativeDocumentMoniker": "DTO\\BookDto.cs",
+              "ToolTip": "C:\\Library\\Lib2\\DTO\\BookDto.cs",
+              "RelativeToolTip": "DTO\\BookDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T08:45:47.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "booklogo.jpg - Bitmap [1024x733, 24 bit, JPG]",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\booklogo.jpg",
+              "RelativeDocumentMoniker": "wwwroot\\booklogo.jpg",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\booklogo.jpg - Bitmap [1024x733, 24 bit, JPG]",
+              "RelativeToolTip": "wwwroot\\booklogo.jpg - Bitmap [1024x733, 24 bit, JPG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-07-17T08:37:53.05Z",
+              "EditorCaption": " - Bitmap [1024x733, 24 bit, JPG]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Library\\Lib2\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Library\\Lib2\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "Controllers\\CategoriesController.cs",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAkwIoAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T08:30:10.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "BooksController.cs",
               "DocumentMoniker": "C:\\Library\\Lib2\\Controllers\\BooksController.cs",
               "RelativeDocumentMoniker": "Controllers\\BooksController.cs",
               "ToolTip": "C:\\Library\\Lib2\\Controllers\\BooksController.cs",
               "RelativeToolTip": "Controllers\\BooksController.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAowAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T08:21:22.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T08:29:14.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "editAuthor.html",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\editAuthor.html",
+              "RelativeDocumentMoniker": "wwwroot\\editAuthor.html",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\editAuthor.html",
+              "RelativeToolTip": "wwwroot\\editAuthor.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-17T08:14:57.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuthorsController.cs",
+              "DocumentMoniker": "C:\\Library\\Lib2\\Controllers\\AuthorsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthorsController.cs",
+              "ToolTip": "C:\\Library\\Lib2\\Controllers\\AuthorsController.cs",
+              "RelativeToolTip": "Controllers\\AuthorsController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwCAAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T08:08:37.961Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "indexpage.jpg - Bitmap [630x360, 24 bit, JPG]",
-              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\indexpage.jpg",
-              "RelativeDocumentMoniker": "wwwroot\\indexpage.jpg",
-              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\indexpage.jpg - Bitmap [630x360, 24 bit, JPG]",
-              "RelativeToolTip": "wwwroot\\indexpage.jpg - Bitmap [630x360, 24 bit, JPG]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2024-06-27T08:12:51.389Z",
-              "EditorCaption": " - Bitmap [630x360, 24 bit, JPG]"
+              "Title": "booklist.html",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\booklist.html",
+              "RelativeDocumentMoniker": "wwwroot\\booklist.html",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\booklist.html",
+              "RelativeToolTip": "wwwroot\\booklist.html",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAFMAAABnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-17T05:16:36.442Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -69,48 +192,22 @@
               "RelativeDocumentMoniker": "wwwroot\\scripts.js",
               "ToolTip": "C:\\Library\\Lib2\\wwwroot\\scripts.js",
               "RelativeToolTip": "wwwroot\\scripts.js",
-              "ViewState": "AQIAAAEBAAAAAAAAAAAAwCkBAAAeAAAA",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAgwJEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-27T07:26:08.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "detail.html",
-              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\detail.html",
-              "RelativeDocumentMoniker": "wwwroot\\detail.html",
-              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\detail.html",
-              "RelativeToolTip": "wwwroot\\detail.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAByAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-06-27T07:56:38.069Z",
+              "WhenOpened": "2024-07-17T05:15:22.592Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "authorlist.html",
-              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\authorlist.html",
-              "RelativeDocumentMoniker": "wwwroot\\authorlist.html",
-              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\authorlist.html",
-              "RelativeToolTip": "wwwroot\\authorlist.html",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAAAEAAAAAmAAAA",
+              "Title": "category.html",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\category.html",
+              "RelativeDocumentMoniker": "wwwroot\\category.html",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\category.html",
+              "RelativeToolTip": "wwwroot\\category.html",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAAwAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-06-27T07:47:38.281Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "booklist.html",
-              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\booklist.html",
-              "RelativeDocumentMoniker": "wwwroot\\booklist.html",
-              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\booklist.html",
-              "RelativeToolTip": "wwwroot\\booklist.html",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAAEEAAABZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-06-25T07:49:15.511Z",
+              "WhenOpened": "2024-07-17T05:15:19.757Z",
               "EditorCaption": ""
             }
           ]

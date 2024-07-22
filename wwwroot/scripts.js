@@ -1,24 +1,26 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.querySelector("#books")) {
-    loadAuthorsForSelectBox();
-    loadCategories();
+
+    if (document.querySelector("#booklists")) {
+
+        loadAuthorsForSelectBox();
+        loadCategories();
     }
-   
+    if (document.querySelector("#searchInput")) {
+        document.getElementById('searchInput').addEventListener('input', searchBooks);
+    }
     if (window.location.pathname.endsWith("edit.html")) {
         loadBookForEdit();
     }
-    if (window.location.pathname.endsWith("editAuthor.html")) {
-        loadAuthorForEdit();
-    }
+
     if (window.location.pathname.endsWith("editCategory.html")) {
         loadCategoryForEdit();
     }
     if (window.location.pathname.endsWith("detail.html")) {
         loadDetailPage();
     }
-  if (document.querySelector("#authors-table-body")) {
-    loadAuthorsForTable();
+    if (document.querySelector("#authors-table-body")) {
+        loadAuthorsForTable();
     }
     if (document.querySelector("#categoriesTableBody")) {
         loadCategoriesForTable();
@@ -26,46 +28,240 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector("#booksTable")) {
         loadBooks();
     }
-  
-  if (document.querySelector("#categories")) {
-    loadCategories();
+
+    if (document.querySelector("#categories")) {
+        loadCategories();
     }
-    
+
+
 });
+//function showAddBookFormForCategory() {
+//    var newDiv = document.createElement('div');
+//    newDiv.className = 'new-book-form mt-4';
+//    loadAuthorsForSelectBox();
+//    var formContent = `
+//            <div class="form-group">
+//        <label style = "font-weight:bold;" for= "book-title"> Book Title</label>
+//            <input type="text" class="form-control" id="book-title" placeholder="Enter book title">
+//        </div>
+//        <div class="form-group">
+//            <label style="font-weight:bold;" for="book-author">Author</label>
+//            <select class="form-control" id="book-author"></select>
+//        </div>
+//         <div class="form-group">
+//            <label style="font-weight:bold;" for="publicationDate">Publication Date</label>
+//            <input type="date" class="form-control" id="publicationDate" placeholder="Enter Publication Date">
+//        </div>
+//        <div class="form-group">
+//            <label style="font-weight:bold;" for="price">Price</label>
+//            <input type="text" class="form-control" id="price" placeholder="Enter book price">
+//        </div>
+//        `;
+//    newDiv.innerHTML = formContent;
+//    document.getElementById('new-book-form-container').appendChild(newDiv);
+//    document.getElementById('addNewBook').style.display = "none";
+//}
+
+/*function displayMessage(message, isSuccess) {
+    const messageDiv = document.getElementById('messages');
+    messageDiv.innerText = message;
+    messageDiv.style.color = isSuccess ? 'green' : 'red';
+}*/
+function displayMessage(message, isSuccess) {
+    if (isSuccess) {
+        alertify.success(message);
+    } else {
+        alertify.error(message);
+    }
+}
+
+function searchBooks() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const booksTable = document.getElementById('booksTable');
+    const rows = booksTable.getElementsByTagName('tr');
+
+    for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let found = false;
+
+        for (let j = 0; j < cells.length; j++) {
+            const cellValue = cells[j].textContent || cells[j].innerText;
+            if (cellValue.toLowerCase().indexOf(searchInput) > -1) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            rows[i].style.display = '';
+        } else {
+            rows[i].style.display = 'none';
+        }
+    }
+}
+
+
+//function exportTableToExcel() {
+//    var table = document.getElementById("books");
+//    var clonedTable = table.cloneNode(true);
+
+//    // Remove the status column (assuming it's the 7th column, index 6)
+//    var rows = clonedTable.rows;
+//    for (var i = 0; i < rows.length; i++) {
+//        if (rows[i].cells[7]) {
+//            rows[i].deleteCell(7);
+//        }
+//    }
+
+//    var wb = XLSX.utils.table_to_book(clonedTable, { sheet: "Sheet JS" });
+
+//    // Define cell styles
+//    var ws = wb.Sheets["Sheet JS"];
+//    var range = XLSX.utils.decode_range(ws['!ref']);
+
+//    for (var R = range.s.r; R <= range.e.r; ++R) {
+//        for (var C = range.s.c; C <= range.e.c; ++C) {
+//            var cell_address = { c: C, r: R };
+//            var cell_ref = XLSX.utils.encode_cell(cell_address);
+
+//            if (!ws[cell_ref]) continue;
+
+//            // Apply borders
+//            ws[cell_ref].s = {
+//                border: {
+//                    top: { style: "thin" },
+//                    bottom: { style: "thin" },
+//                    left: { style: "thin" },
+//                    right: { style: "thin" }
+//                }
+//            };
+
+//            // Make the header bold
+//            if (R === 0) {
+//                ws[cell_ref].s.font = { bold: true };
+//            }
+//        }
+//    }
+
+//    XLSX.writeFile(wb, "Book_List.xlsx");
+//}
 
 
 function exportTableToExcel() {
-    var table = document.getElementById("books");
-    var rows = table.getElementsByTagName("tr");
-    var csvContent = "data:text/csv;charset=utf-8," + "Id,Title,Author,Category,Publication Date,Price,Created Date\n"; // CSV header;
+    var table = document.getElementById("booklists");
+    var clonedTable = table.cloneNode(true);
 
-    // Iterate through rows and append to csvContent
+    // Remove the status column (assuming it's the 7th column, index 6)
+    var rows = clonedTable.rows;
     for (var i = 0; i < rows.length; i++) {
-        var row = [], cols = rows[i].getElementsByTagName("td");
-        for (var j = 0; j + 1 < cols.length; j++) {
-            row.push(cols[j].innerText);
+        if (rows[i].cells[7]) { // Adjusted index to 6 for 7th column
+            rows[i].deleteCell(7);
         }
-        csvContent += row.join(",") + "\n";
     }
 
-    // Create a hidden link element to trigger the download
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "Book_List.csv");
-    document.body.appendChild(link);
+    var wb = XLSX.utils.table_to_book(clonedTable, { sheet: "Sheet JS" });
 
-    // Trigger the download
-    link.click();
+    // Define cell styles
+    var ws = wb.Sheets["Sheet JS"];
+    var range = XLSX.utils.decode_range(ws['!ref']);
 
+    for (var R = range.s.r; R <= range.e.r; ++R) {
+        for (var C = range.s.c; C <= range.e.c; ++C) {
+            var cell_address = { c: C, r: R };
+            var cell_ref = XLSX.utils.encode_cell(cell_address);
+
+            if (!ws[cell_ref]) continue;
+
+            // Apply borders
+            ws[cell_ref].s = ws[cell_ref].s || {};
+            ws[cell_ref].s.border = {
+                top: { style: "thin" },
+                bottom: { style: "thin" },
+                left: { style: "thin" },
+                right: { style: "thin" }
+            };
+
+            // Make the header bold
+            if (R === 0) {
+                ws[cell_ref].s.font = { bold: true };
+            }
+        }
+    }
+
+    XLSX.writeFile(wb, "Book_List.xlsx");
 }
-function showAddBookFormForCategory(categoryId) {
-    const addBookForm = document.getElementById("add-book-form");
-    const categorySelect = document.getElementById("book-category");
 
-    addBookForm.style.display = "block";
-    categorySelect.value = categoryId;
-    categorySelect.disabled = true; // Disable the category select box
+
+//function exportTableToExcel() {
+//    var table = document.getElementById("books");
+//    var clonedTable = table.cloneNode(true);
+
+//    // Remove the status column (assuming it's the 7th column, index 6)
+//    var rows = clonedTable.rows;
+//    for (var i = 0; i < rows.length; i++) {
+//        if (rows[i].cells[6]) { // Adjusted index to 6 for 7th column
+//            rows[i].deleteCell(6);
+//        }
+//    }
+
+//    var wb = XLSX.utils.table_to_book(clonedTable, { sheet: "Sheet JS" });
+
+//    // Define cell styles
+//    var ws = wb.Sheets["Sheet JS"];
+//    var range = XLSX.utils.decode_range(ws['!ref']);
+
+//    for (var R = range.s.r; R <= range.e.r; ++R) {
+//        for (var C = range.s.c; C <= range.e.c; ++C) {
+//            var cell_address = { c: C, r: R };
+//            var cell_ref = XLSX.utils.encode_cell(cell_address);
+
+//            if (!ws[cell_ref]) continue;
+
+//            // Apply borders
+//            ws[cell_ref].s = ws[cell_ref].s || {};
+//            ws[cell_ref].s.border = {
+//                top: { style: "thin" },
+//                bottom: { style: "thin" },
+//                left: { style: "thin" },
+//                right: { style: "thin" }
+//            };
+
+//            // Make the header bold
+//            if (R === 0) {
+//                ws[cell_ref].s.font = { bold: true };
+//            }
+//        }
+//    }
+
+//    XLSX.writeFile(wb, "Book_List.xlsx");
+//}
+
+
+
+
+function showAddBookFormForCategory() {
+    var newDiv = document.createElement('div');
+    newDiv.className = 'new-book-form mt-4';
+    loadAuthorsForSelectBox();
+    var formContent = `
+        <div class="add-book-form">
+           <h2>Add Book</h2>
+                    <input type="text" id="book-title" class="form-control" placeholder="Book Title" />
+                    <select id="book-author" class="form-control my-2"></select>
+                    <input type="date" class="form-control" id="publicationDate">
+                    <input type="text" class="form-control" id="price" placeholder="Enter book price">
+            <button type="submit" onclick="cancelAddCategory()" class="btn btn-primary">Cancel</button>
+        </div>
+    `;
+
+    newDiv.innerHTML = formContent;
+    document.getElementById('new-book-form-container').appendChild(newDiv);
+
+
+    document.getElementById("addNewBook").style.display = 'none';
+
+    // Optional: Hide the add button if you only want to allow one form at a time
+    // document.getElementById('addNewBook').style.display = "none";
 }
 function cancelAddBook() {
     const addBookForm = document.getElementById("add-book-form");
@@ -76,11 +272,12 @@ function cancelAddBook() {
 }
 
 function cancelAddCategory() {
-    const addCategoryForm = document.getElementById("add-category-form");
-    
+    window.location.href = 'category.html';
+    //const addCategoryForm = document.getElementById("add-book-form");
 
-    addCategoryForm.style.display = "none";
-    
+
+    //addCategoryForm.style.display = "none";
+
 }
 function cancelAddAuthor() {
     const addAuthorForm = document.getElementById("add-author-form");
@@ -104,16 +301,23 @@ function cancelEditAuthor() {
 
 
 function showAddAuthorForm() {
-  document.getElementById("add-author-form").style.display = "block";
+    document.getElementById("add-author-form").style.display = "block";
+
 }
 
 function showAddCategoryForm() {
-  document.getElementById("add-category-form").style.display = "block";
+    document.getElementById("add-category-form").style.display = "block";
 }
 
 async function loadBooks() {
+
     const response = await fetch("http://localhost:5211/api/books");
+    if (!response.ok) {
+        throw new Error('Failed to fetch books');
+    }
     const books = await response.json();
+    const data = books.data;
+
     const tableBody = document.getElementById("booksTable");
 
     if (!tableBody) {
@@ -125,14 +329,29 @@ async function loadBooks() {
     tableBody.innerHTML = "";
 
     // Populate the table with book data
-    for (const [index, book] of books.entries()) {
+    for (const [index, book] of data.entries()) {
+        /* let authorName = 'unknown';
+         let categoryName = 'unknown';*/
+      
         // Fetch author data for the book
         const authorResponse = await fetch(`http://localhost:5211/api/authors/${book.authorId}`);
-        const author = await authorResponse.json();
+        if (authorResponse.ok) {
+            const author = await authorResponse.json();
+            authorName = author.data.name;
+        } else {
+            console.error(`Failed to fetch author with ID ${book.authorId}`);
+        }
+
 
         // Fetch category data for the book
         const categoryResponse = await fetch(`http://localhost:5211/api/categories/${book.categoryId}`);
-        const category = await categoryResponse.json();
+        if (categoryResponse.ok) {
+            const category = await categoryResponse.json();
+            categoryName = category.data.name;
+           
+        } else {
+            console.error(`Failed to fetch category with ID ${book.categoryId}`);
+        }
 
         const row = tableBody.insertRow();
         const cell1 = row.insertCell(0);
@@ -145,20 +364,21 @@ async function loadBooks() {
         const cell8 = row.insertCell(7);
         const displayedId = index + 1;
 
-
         cell1.textContent = displayedId;
-        /*cell1.textContent = book.id;*/
         cell2.textContent = book.title;
-        cell3.textContent = author.name; // Use the author name from the fetched author data
-        cell4.textContent = category.name; // Use the category name from the fetched category data
+        cell3.textContent = authorName; // Use the author name from the fetched author data
+        cell4.textContent = categoryName;; // Use the category name from the fetched category data
         cell5.textContent = new Date(book.publicationDate).toLocaleDateString();
         cell6.textContent = book.price;
         cell7.textContent = new Date(book.createdDate).toLocaleDateString(); // Display created date
         cell8.innerHTML = `<button class="btn btn-add" onclick="redirectToEdit(${book.id})">Edit</button>
-                        <button class="btn btn-add" onclick="deleteBook(${book.id})">Delete</button>
-                        <button class="btn btn-add" onclick="redirectToDetail(${book.id})">Details</button>`; 
+                            <button class="btn btn-add" onclick="deleteBook(${book.id})">Delete</button>
+                            <button class="btn btn-add" onclick="redirectToDetail(${book.id})">Details</button>`;
     }
+
 }
+
+
 
 // Function to redirect to the detail page with the book ID
 function redirectToDetail(bookId) {
@@ -172,18 +392,21 @@ async function deleteBook(bookId) {
     const response = await fetch(`http://localhost:5211/api/books/${bookId}`, {
         method: 'DELETE'
     });
-
+    const result = await response.json();
     if (response.ok) {
+        displayMessage(result.message);
         // Reload the authors table or remove the specific row from the table
         loadBooks();
     } else {
+        displayMessage(result.message, false);
         console.error('Failed to delete author:', await response.text());
     }
 }
-// Function to load book data into the form for editing
+//Function to load book data into the form for editing
 async function loadBookForEdit() {
+
     const urlParams = new URLSearchParams(window.location.search);
-    const bookId = urlParams.get('bookId');
+    const bookId = parseInt(urlParams.get('bookId'));
 
     if (!bookId) {
         console.error("No bookId found in URL");
@@ -192,92 +415,103 @@ async function loadBookForEdit() {
 
     const response = await fetch(`http://localhost:5211/api/books/${bookId}`);
     const book = await response.json();
-    console.log("Publication Date from API:", book.publicationDate);
+    
+
     // Load author and category data for select boxes
     await loadAuthorsForSelectBox();
     await loadCategories();
 
     // Populate the form fields with the book data
-    document.getElementById("book-title").value = book.title;
-    document.getElementById("book-author").value = book.authorId;
-    document.getElementById("book-category").value = book.categoryId;
-    const publicationDate = book.publicationDate.split('T')[0];
+    document.getElementById("book-title").value = book.data.title;
+    document.getElementById("book-author").value = book.data.authorId;
+    document.getElementById("book-category").value = book.data.categoryId;
+    const publicationDate = book.data.publicationDate.split('T')[0];
     document.getElementById("book-publication-date").value = publicationDate;
-    document.getElementById("book-price").value = book.price;
-
-/*    // Show the form
-    document.getElementById("editBookForm").style.display = "block";*/
-
+    document.getElementById("book-price").value = book.data.price;
     // Add submit event listener to the form
     document.getElementById("editBookForm").addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const updatedBook = {
-            ...book,
             title: document.getElementById("book-title").value,
             authorId: document.getElementById("book-author").value,
             categoryId: document.getElementById("book-category").value,
             publicationDate: document.getElementById("book-publication-date").value,
             price: document.getElementById("book-price").value,
         };
-
+       
         const updateResponse = await fetch(`http://localhost:5211/api/books/${bookId}`, {
-            method: "PUT",
+            method: 'PUT',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(updatedBook),
+            body: JSON.stringify(updatedBook)
         });
-
+        const result = await updateResponse.json();
+       
         if (updateResponse.ok) {
-            window.location.href = "booklist.html"; // Redirect to the book list page
+
+            // Construct the URL with the alert message as a query parameter
+
+            Swal.fire({
+                title: "Update",
+                text: result.message,
+                icon: "success"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `booklist.html`;
+                }
+            });
+
         } else {
+            /*displayMessage(result.message, false);*/
             console.error("Failed to update book:", await updateResponse.text());
         }
     });
 }
-// Function to load and display the details of a book
+//Function to load and display the details of a book
 async function loadBookDetails(bookId) {
-    try { 
-    // Fetch book data
-    const response = await fetch(`http://localhost:5211/api/books/${bookId}`);
-    const book = await response.json();
+    try {
+        // Fetch book data
+        const response = await fetch(`http://localhost:5211/api/books/${bookId}`);
+        const book = await response.json();
 
-    // Fetch author data
-    const authorResponse = await fetch(`http://localhost:5211/api/authors/${book.authorId}`);
-    const author = await authorResponse.json();
+        
+        // Fetch author data
+        const authorResponse = await fetch(`http://localhost:5211/api/authors/${book.data.authorId}`);
+        const author = await authorResponse.json();
+        
+        // Fetch category data
+        const categoryResponse = await fetch(`http://localhost:5211/api/categories/${book.data.categoryId}`);
+        const category = await categoryResponse.json();
+       
+        const detailsContainer = document.getElementById("bookDetails");
 
-    // Fetch category data
-    const categoryResponse = await fetch(`http://localhost:5211/api/categories/${book.categoryId}`);
-    const category = await categoryResponse.json();
+        if (!detailsContainer) {
+            console.error("Details container element not found");
+            return;
+        }
 
-    const detailsContainer = document.getElementById("bookDetails");
-
-    if (!detailsContainer) {
-        console.error("Details container element not found");
-        return;
-    }
-
-    // Display the details of the book
-    detailsContainer.innerHTML = `
-        <h2 class="card-title">${book.title}</h2>
-            <p class="card-text"><strong>Author:</strong> ${author.name}</p>
-            <p class="card-text"><strong>Category:</strong> ${category.name}</p>
-            <p class="card-text"><strong>Publication Date:</strong> ${new Date(book.publicationDate).toLocaleDateString() }</p>
-            <p class="card-text"><strong>Price:</strong> ${book.price}</p>
-            <p class="card-text"><strong>Created Date:</strong> ${new Date(book.createdDate).toLocaleDateString()}</p>
+        // Display the details of the book
+        detailsContainer.innerHTML = `
+        <h2 class="card-title">${book.data.title}</h2>
+            <p class="card-text"><strong>Author:</strong> ${author.data.name}</p>
+            <p class="card-text"><strong>Category:</strong> ${category.data.name}</p>
+            <p class="card-text"><strong>Publication Date:</strong> ${new Date(book.data.publicationDate).toLocaleDateString()}</p>
+            <p class="card-text"><strong>Price:</strong> ${book.data.price}</p>
+            <p class="card-text"><strong>Created Date:</strong> ${new Date(book.data.createdDate).toLocaleDateString()}</p>
     `;
-    // Add event listener to the download PDF button
-    const downloadButton = document.getElementById("downloadButton");
-    if (downloadButton) {
-        downloadButton.addEventListener("click", () => {
-            downloadBookDetailsAsPDF(book, author, category);
-        });
-    }
+        // Add event listener to the download PDF button
+        const downloadButton = document.getElementById("downloadButton");
+        if (downloadButton) {
+            downloadButton.addEventListener("click", () => {
+                downloadBookDetailsAsPDF(book, author, category);
+            });
+        }
 
-} catch (error) {
-    console.error("Error loading book details:", error);
-}
+    } catch (error) {
+        console.error("Error loading book details:", error);
+    }
 }
 // Function to download book details as PDF
 function downloadBookDetailsAsPDF(book, author, category) {
@@ -298,42 +532,42 @@ function downloadBookDetailsAsPDF(book, author, category) {
     doc.setFont(undefined, 'bold'); // Set font to bold
     doc.text(`Book Title:`, margin, yPosition);
     doc.setFont(undefined, 'normal');
-    doc.text(`${book.title}`, margin + 60, yPosition);
+    doc.text(`${book.data.title}`, margin + 60, yPosition);
     yPosition += lineHeight;
 
     doc.setFont(undefined, 'bold');
     doc.text(`Author:`, margin, yPosition);
     doc.setFont(undefined, 'normal');
-    doc.text(`${author.name}`, margin + 60, yPosition);
+    doc.text(`${author.data.name}`, margin + 60, yPosition);
     yPosition += lineHeight;
 
     doc.setFont(undefined, 'bold');
     doc.text(`Category:`, margin, yPosition);
     doc.setFont(undefined, 'normal');
-    doc.text(`${category.name}`, margin + 60, yPosition);
+    doc.text(`${category.data.name}`, margin + 60, yPosition);
     yPosition += lineHeight;
 
     doc.setFont(undefined, 'bold');
     doc.text(`Publication Date:`, margin, yPosition);
     doc.setFont(undefined, 'normal');
-    doc.text(`${new Date(book.publicationDate).toLocaleDateString()}`, margin + 60, yPosition);
+    doc.text(`${new Date(book.data.publicationDate).toLocaleDateString()}`, margin + 60, yPosition);
     yPosition += lineHeight;
 
     doc.setFont(undefined, 'bold');
     doc.text(`Price:`, margin, yPosition);
     doc.setFont(undefined, 'normal');
-    doc.text(`${book.price}`, margin + 60, yPosition);
+    doc.text(`${book.data.price}`, margin + 60, yPosition);
     yPosition += lineHeight;
 
     doc.setFont(undefined, 'bold');
     doc.text(`Created Date:`, margin, yPosition);
     doc.setFont(undefined, 'normal');
-    doc.text(`${new Date(book.createdDate).toLocaleDateString()}`, margin + 60, yPosition);
+    doc.text(`${new Date(book.data.createdDate).toLocaleDateString()}`, margin + 60, yPosition);
     yPosition += lineHeight;
 
 
     // Save PDF with a dynamic filename
-    doc.save(`BookDetails_${book.title}.pdf`);
+    doc.save(`BookDetails_${book.data.title}.pdf`);
 }
 // Function to extract the book ID from the URL query string and load the details
 async function loadDetailPage() {
@@ -354,391 +588,475 @@ async function loadDetailPage() {
         });
     }
 }
+
 async function loadAuthorsForSelectBox() {
-  const response = await fetch("http://localhost:5211/api/authors");
-  const authors = await response.json();
-  const authorSelect = document.getElementById("book-author");
-
-  if (!authorSelect) {
-    console.error("Select box element not found");
-    return;
-  }
-
-  // Clear existing options
-  authorSelect.innerHTML = "";
-
-  // Add a default option
-  const defaultOption = document.createElement("option");
-  defaultOption.value = "";
-  defaultOption.textContent = "Select Author";
-  authorSelect.appendChild(defaultOption);
-
-  // Add authors to the select box
-  authors.forEach((author) => {
-    const option = document.createElement("option");
-    option.value = author.id;
-    option.textContent = author.name;
-    authorSelect.appendChild(option);
-
-    console.log(author.id);
-  });
-}
-
-
-
-async function loadAuthorsForTable() {
-  const response = await fetch("http://localhost:5211/api/authors");
-  const authors = await response.json();
-  const tableBody = document.getElementById("authors-table-body");
-
-  if (!tableBody) {
-    console.error("Table body element not found");
-    return;
-  }
-
-  // Clear existing table rows
-  tableBody.innerHTML = "";
-
-  // Populate the table with author data
-  authors.forEach((author,index) => {
-    const row = tableBody.insertRow();
-    const cell1 = row.insertCell(0);
-      const cell2 = row.insertCell(1);
-      const cell3 = row.insertCell(2);
-      const cell4 = row.insertCell(3);
-      const displayedId = index + 1;
-
-
-      cell1.textContent = displayedId;
-    /*cell1.textContent = author.id;*/
-      cell2.textContent = author.name;
-      cell3.textContent = new Date(author.createdDate).toLocaleDateString(); // Display created date
-      cell4.innerHTML = `<button class="btn btn-add" onclick="editAuthor(${author.id})">Edit</button>
-                        <button class="btn btn-add" onclick="deleteAuthor(${author.id})">Delete</button>`;
-  });
-}
-
-async function editAuthor(authorId) {
-    console.log('Editing author with ID:', authorId);
-    window.location.href = `editAuthor.html?authorId=${authorId}`;
-}
-async function loadAuthorForEdit() {
-    
     try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const authorId = urlParams.get('authorId');
-
-        if (!authorId) {
-            console.error("No authorId found in URL");
-            return;
-        }
-       
-        const response = await fetch(`http://localhost:5211/api/authors/${authorId}`);
+        const response = await fetch("http://localhost:5211/api/authors");
         if (!response.ok) {
-            throw new Error('Failed to fetch author data');
+            throw new Error('Failed to fetch authors');
         }
-        const author = await response.json();
+        const apiResponse = await response.json();
+        const authors = apiResponse.data; // Access the Data property
 
-        document.getElementById('authorName').value = author.name;
-
-       
-        document.getElementById("editAuthorForm").addEventListener("submit", async function (event) {
-            event.preventDefault();
+        // Log the response to check the structure
         
 
-            const updatedName = document.getElementById('authorName').value;
+        const authorSelect = document.getElementById("book-author");
+        if (!authorSelect) {
+            console.error("Select box element not found");
+            return;
+        }
 
-            const updatedAuthor = {
-                id: authorId,
-                name: updatedName
-            };
+        // Clear existing options
+        authorSelect.innerHTML = "";
 
-            const updateResponse = await fetch(`http://localhost:5211/api/authors/${authorId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updatedAuthor)
-            });
+        // Add a default option
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "Select Author";
+        authorSelect.appendChild(defaultOption);
 
-            if (updateResponse.ok) {
-                alert('Author updated successfully!');
-                window.location.href = 'authorList.html'; // Redirect to author list page
-            } else {
-                throw new Error('Failed to update author');
-            }
+        // Check if authors is an array
+
+        // Add authors to the select box
+        authors.forEach((author) => {
+            const option = document.createElement("option");
+            option.value = author.id;
+            option.textContent = author.name;
+            authorSelect.appendChild(option);
         });
+
     } catch (error) {
-        console.error('Error:', error);
-        // Handle error, e.g., display an error message to the user
+        console.error('Error loading authors:', error);
+    }
+}
+async function loadAuthorsForTable() {
+    try {
+        const response = await fetch("http://localhost:5211/api/authors");
+        if (!response.ok) {
+            throw new Error('Failed to fetch authors');
+        }
+        const apiResponse = await response.json();
+        const authors = apiResponse.data; // Access the Data property
+
+        const tableBody = document.getElementById("authors-table-body");
+        if (!tableBody) {
+            console.error("Table body element not found");
+            return;
+        }
+
+        // Clear existing table rows
+        tableBody.innerHTML = "";
+
+        // Populate the table with author data
+        if (Array.isArray(authors)) {
+            authors.forEach((author, index) => {
+                const row = tableBody.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
+                const displayedId = index + 1;
+
+                cell1.textContent = displayedId;
+                cell2.textContent = author.name;
+                cell3.textContent = new Date(author.createdDate).toLocaleDateString(); // Display created date
+                cell4.innerHTML = `
+          <button class="btn btn-add" onclick="editAuthor(${author.id})">Edit</button>
+          <button class="btn btn-add" onclick="deleteAuthor(${author.id})">Delete</button>`;
+            });
+        } else {
+            console.error('Expected an array of authors, but got:', authors);
+        }
+    } catch (error) {
+        console.error('Error loading authors:', error);
+        alertify.error('An error occurred while loading authors.');
     }
 }
 
 
+async function editAuthor(authorId) {
+    
+    document.getElementById("add-author-form").style.display = "block";
+    const response = await fetch(`http://localhost:5211/api/authors/${authorId}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch author data');
+    }
+    const author = await response.json();
+
+    document.getElementById('author-name').value = author.data.name;
+    document.getElementById('hiddenAuthor').value = authorId;
+
+}
 
 // Function to delete an author
 async function deleteAuthor(authorId) {
     const response = await fetch(`http://localhost:5211/api/authors/${authorId}`, {
         method: 'DELETE'
     });
-
+    const result = await response.json();
     if (response.ok) {
+        displayMessage(result.message, true);
+        /*alert()*/
         // Reload the authors table or remove the specific row from the table
         loadAuthorsForTable();
     } else {
+        displayMessage(result.message, false);
         console.error('Failed to delete author:', await response.text());
     }
 }
-
-
 async function loadCategoriesForTable() {
-    const response = await fetch("http://localhost:5211/api/categories");
-    const categories = await response.json();
-    const categoriesTableBody = document.getElementById("categoriesTableBody");
-
-    if (!categoriesTableBody) {
-        console.error("Categories table body element not found");
-        return;
-    }
-
-    // Clear existing table rows
-    categoriesTableBody.innerHTML = "";
-
-    // Populate the table with category data
-    categories.forEach((category) => {
-        const row = categoriesTableBody.insertRow();
-        const nameCell = row.insertCell();
-        const dateCell = row.insertCell(); // New cell for createdDate
-        const actionCell = row.insertCell();
-
-        const link = document.createElement("a");
-        link.href = "#"; // You can set the link href to navigate to a specific page
-        link.textContent = category.name;
-        link.classList.add("category-link", "text-white");
-        link.onclick = (event) => {
-            event.preventDefault(); // Prevent default link behavior
-            handleCategoryClick(category.id);
-        }; // Handle the click event
-
-        nameCell.appendChild(link);
-        const formattedDate = new Date(category.createdDate).toLocaleDateString();
-        dateCell.textContent = formattedDate; // Set the createdDate cell
-        actionCell.innerHTML = `<button class="btn btn-add" onclick="editCategory(${category.id})">Edit</button>
-                                <button class="btn btn-add" onclick="deleteCategory(${category.id})">Delete</button>`;
-    });
-}
-
-async function editCategory(categoryId) {
-    console.log('Editing category with ID:', categoryId);
-    window.location.href = `editCategory.html?categoryId=${categoryId}`;
-}
-async function loadCategoryForEdit() {
-
     try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const categoryId = urlParams.get('categoryId');
+        const response = await fetch("http://localhost:5211/api/categories");
+        if (!response.ok) {
+            throw new Error('Failed to fetch categories');
+        }
+        const apiResponse = await response.json();
+        const categories = apiResponse.data; // Access the Data property
 
-        if (!categoryId) {
-            console.error("No categoryId found in URL");
+        const categoriesTableBody = document.getElementById("categoriesTableBody");
+
+        if (!categoriesTableBody) {
+            console.error("Categories table body element not found");
             return;
         }
 
-        const response = await fetch(`http://localhost:5211/api/categories/${categoryId}`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch category data');
-        }
-        const category = await response.json();
+        // Clear existing table rows
+        categoriesTableBody.innerHTML = "";
 
-        document.getElementById('categoryName').value = category.name;
-        document.getElementById("editCategoryForm").addEventListener("submit", async function (event) {
-            event.preventDefault();
+        if (Array.isArray(categories)) {
+            // Populate the table with category data
+            categories.forEach((category) => {
+                const row = categoriesTableBody.insertRow();
+                const nameCell = row.insertCell();
+                const dateCell = row.insertCell(); // New cell for createdDate
+                const actionCell = row.insertCell();
 
+                const link = document.createElement("a");
+                link.href = "#"; // You can set the link href to navigate to a specific page
+                link.textContent = category.name;
+                link.classList.add("category-link", "text-white");
+                //link.onclick = (event) => {
+                //    event.preventDefault(); // Prevent default link behavior
+                //    handleCategoryClick(category.id);
+                //}; // Handle the click event
 
-            const updatedName = document.getElementById('categoryName').value;
-
-            const updatedCategory = {
-                id: categoryId,
-                name: updatedName
-            };
-
-            const updateResponse = await fetch(`http://localhost:5211/api/categories/${categoryId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updatedCategory)
+                nameCell.appendChild(link);
+                const formattedDate = new Date(category.createdDate).toLocaleDateString();
+                dateCell.textContent = formattedDate; // Set the createdDate cell
+                actionCell.innerHTML = `
+          <button class="btn btn-add" onclick="editCategory(${category.id})">Edit</button>
+          <button class="btn btn-add" onclick="deleteCategory(${category.id})">Delete</button>`;
             });
-
-            if (updateResponse.ok) {
-                alert('Category updated successfully!');
-                window.location.href = 'category.html';
-            } else {
-                throw new Error('Failed to update category');
-            }
-        });
+        } else {
+            console.error('Expected an array of categories, but got:', categories);
+        }
     } catch (error) {
-        console.error('Error:', error);
-        // Handle error, e.g., display an error message to the user
+        console.error('Error loading categories:', error);
+        alertify.error('An error occurred while loading categories.');
     }
 }
+
+async function editCategory(categoryId) {
+   
+    document.getElementById("add-category-form").style.display = "block";
+    const response = await fetch(`http://localhost:5211/api/categories/${categoryId}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch category data');
+    }
+    const category = await response.json();
+    document.getElementById('category-name').value = category.data.name;
+    document.getElementById('hiddenCategory').value = categoryId;
+
+}
+
 //Function to delete an category
 async function deleteCategory(categoryId) {
     const response = await fetch(`http://localhost:5211/api/categories/${categoryId}`, {
         method: 'DELETE'
     });
-
+    const result = await response.json();
     if (response.ok) {
+        displayMessage(result.message);
         // Reload the authors table or remove the specific row from the table
         loadCategoriesForTable();
     } else {
+        displayMessage(result.message, true);
         console.error('Failed to delete author:', await response.text());
     }
 }
 
 
 
-function handleCategoryClick(categoryId) {
-    showAddBookFormForCategory(categoryId);
-}
+//function handleCategoryClick(categoryId) {
+//    showAddBookFormForCategory(categoryId);
+//}
 
 async function loadCategories() {
-  const response = await fetch("http://localhost:5211/api/categories");
-  const categories = await response.json();
-  const categorySelect = document.getElementById("book-category");
+    try {
+        const response = await fetch("http://localhost:5211/api/categories");
+        if (!response.ok) {
+            throw new Error('Failed to fetch categories');
+        }
+        const apiResponse = await response.json();
+        const categories = apiResponse.data; // Access the Data property
+        const categorySelect = document.getElementById("book-category");
 
-  if (!categorySelect) {
-    console.error("Select box element not found");
-    return;
-  }
+        if (!categorySelect) {
+            console.error("Select box element not found");
+            return;
+        }
 
-  categorySelect.innerHTML = "";
+        categorySelect.innerHTML = "";
 
-  // Add a default option
-  const defaultOption = document.createElement("option");
-  defaultOption.value = "";
-  defaultOption.textContent = "Select Category";
-  categorySelect.appendChild(defaultOption);
+        // Add a default option
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "Select Category";
+        categorySelect.appendChild(defaultOption);
 
-  // Add categories to the select box
-  categories.forEach((category) => {
-    const option = document.createElement("option");
-    option.value = category.id;
-    option.textContent = category.name;
-    categorySelect.appendChild(option);
-  });
+
+        categories.forEach((category) => {
+            const option = document.createElement("option");
+            option.value = category.id;
+            option.textContent = category.name;
+            categorySelect.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Error loading categories:', error);
+        alertify.error('An error occurred while loading categories.');
+    }
 }
 
-async function addBook() {
-  const title = document.getElementById("book-title").value;
-  /* const authorId = parseInt(document.getElementById("book-author").value, 10); */
-
-  const authorId = document.getElementById("book-author").value;
-
+function addBook() {
+    const title = document.getElementById("book-title").value;
+    const authorId = document.getElementById("book-author").value;
     const categoryId = document.getElementById("book-category").value;
     const publicationDate = document.getElementById("publicationDate").value;
     const price = document.getElementById("price").value;
 
-  console.log("ID : ", authorId);
-  if (isNaN(authorId) || isNaN(categoryId)) {
-    console.error("Author ID and Category ID must be integers.");
-    return;
+   
+    if (isNaN(authorId) || isNaN(categoryId)) {
+        console.error("Author ID and Category ID must be integers.");
+        return;
     }
 
-    const formData =  {
+    const formData = {
         Title: title,
         AuthorId: authorId,
         CategoryId: categoryId,
         PublicationDate: publicationDate,
         Price: price
     };
-
-    const response = await fetch("http://localhost:5211/api/books", {
+    fetch("http://localhost:5211/api/books", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-    });
-
-  //const response = await fetch(`http://localhost:5211/api/books`, {
-  //  method: "POST",
-  //  headers: {
-  //    "Content-Type": "application/json",
-  //  },
-  //  body: JSON.stringify({
-  //    Title: title,
-  //    AuthorId: authorId,
-  //      CategoryId: categoryId,
-  //      PublicationDate: publicationDate,
-  //      Price: price
-  //  }).then((response) => response.json())
-  //        .then((data) => {
-  //            if (data.errors) {
-
-  //                console.error("Failed to add employee:", data);
-  //            } else {
-
-  //                console.log("Employee added successfully:", data);
-  //                // Optionally, reset the form or update the UI
-  //            }
-  //        })
-  //        .catch((error) => console.error("Error:", error))
-
-  //    /*body: JSON.stringify(formData)*/
-  //});
-
-  if (response.ok) {
-    loadBooks();
-    document.getElementById("add-book-form").style.display = "none";
-  } else {
-    console.error("Failed to add book:", await response.text());
-  }
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.errors) {
+                console.error("Failed to add book:", data);
+            } else {
+                displayMessage(data.message, true);
+                document.getElementById("book-title").value = "";
+                document.getElementById("book-author").value = "";
+                document.getElementById("book-category").value = "";
+                document.getElementById("publicationDate").value = "";
+                document.getElementById("price").value = "";
+                loadBooks();
+               
+                // Optionally, reset the form or update the UI
+            }
+        })
+        .catch((error) => console.error("Error:", error));
 }
 
+
 async function addAuthor() {
-  const name = document.getElementById("author-name").value.trim();
+    const id = document.getElementById("hiddenAuthor").value;
+    const name = document.getElementById("author-name").value.trim();
     if (!name) {
         alert("Category name cannot be empty.");
         return;
     }
+    try {
+        const AuthorData = {
+            name: name,
+            status: "Active",
+            createdDate: Date.now
+        };
+        const response = await fetch(`http://localhost:5211/api/authors/${id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(AuthorData),
+        });
+        const result = await response.json();
+        if (response.ok) {
 
-    
-  try {
-    const response = await fetch("http://localhost:5211/api/authors", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name: name }),
-    });
+            displayMessage(result.message, true);
+            loadAuthorsForTable();
+            loadAuthorsForSelectBox();
+            document.getElementById("author-name").value = "";
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+            document.getElementById("hiddenAuthor").value = 0;
+        } else {
+            displayMessage(result.message, false);
+        }
+
+    } catch (error) {
+        displayMessage(error.message, false);
     }
-
-    await response.json();
-    loadAuthorsForTable();
-    loadAuthorsForSelectBox();
-    document.getElementById("add-author-form").style.display = "none";
-  } catch (error) {
-    console.error("Error adding author:", error);
-  }
 }
 
+//async function addCategory() {
+//    const id = document.getElementById("hiddenCategory").value;
+//    if (id == 0) {
+//        const name = document.getElementById("category-name").value;
+
+//        const categoryData = {
+//            name: name,
+//            status: "Active",
+//            createdDate: Date.now
+//        };
+//        const response = await fetch(`http://localhost:5211/api/categories`, {
+//            method: "POST",
+//            headers: {
+//                "Content-Type": "application/json",
+//            },
+//            body: JSON.stringify(categoryData),
+//        });
+//        const result = await response.json();
+//        if (response.ok) {
+//            displayMessage(result.message, true);
+//            loadCategories();
+//            loadCategoriesForTable();
+//            document.getElementById("category-name").value = "";
+
+//        } else {
+//            displayMessage(result.message, false);
+//        }
+//    } else {
+
+//        const updatedName = document.getElementById('category-name').value;
+
+//        const updatedCategory = {
+//            id: id,
+//            name: updatedName,
+//            status: "Active",
+//            createdDate: Date.now
+//        };
+//        const updateResponse = await fetch(`http://localhost:5211/api/categories/${id}`, {
+//            method: 'POST',
+//            headers: {
+//                'Content-Type': 'application/json'
+//            },
+//            body: JSON.stringify(updatedCategory)
+//        });
+//        const result = await updateResponse.json();
+//        if (updateResponse.ok) {
+//            displayMessage(result.message, true);
+//            loadCategories();
+//            loadCategoriesForTable();
+//            document.getElementById("category-name").value = "";
+//        } else {
+//            displayMessage(result.message, false);
+//        }
+//    }
 async function addCategory() {
-  const name = document.getElementById("category-name").value;
+    const id = document.getElementById("hiddenCategory").value;
+    if (id == 0) {
+        const name = document.getElementById("category-name").value;
+        const bookForms = document.querySelectorAll('.add-book-form');
+        const books = [];
 
-  const response = await fetch("http://localhost:5211/api/categories", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name: name }),
-  });
+        //const bookTitle = form.querySelector('input[id="book-title"]').value;
+        //const bookAuthor = form.querySelector('input[id="book-author"]').value;
+        //const publicationDate = form.querySelector('input[id="publication-date"]').value;
+        //const bookPrice = form.querySelector('input[id="book-price"]').value;
 
-  if (response.ok) {
-    loadCategories();
-    loadCategoriesForTable();
-    document.getElementById("add-category-form").style.display = "none";
-  }
+        //const bookTitle = document.getElementById("book-title").value;
+        //const bookAuthor = document.getElementById("book-author").value;
+        //const publicationDate = document.getElementById("publicationDate").value;
+        //const bookPrice = document.getElementById("price").value;
+
+        const bookTitleElement = document.getElementById("book-title");
+        const bookAuthorElement = document.getElementById("book-author");
+        const publicationDateElement = document.getElementById("publicationDate");
+        const bookPriceElement = document.getElementById("price");
+
+        const bookTitle = bookTitleElement ? bookTitleElement.value : null;
+        const bookAuthor = bookAuthorElement ? bookAuthorElement.value : null;
+        const publicationDate = publicationDateElement ? publicationDateElement.value : null;
+        const bookPrice = bookPriceElement ? bookPriceElement.value : null;
+
+
+        if (bookTitle && bookAuthor && publicationDate && bookPrice) {
+            books.push({
+                title: bookTitle,
+                authorId: bookAuthor,
+                publicationDate: publicationDate,
+                price: bookPrice
+            });
+        }
+
+        const categoryData = {
+            name: name,
+            book: books
+
+        };
+        
+        const response = await fetch(`http://localhost:5211/api/categories`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(categoryData),
+        });
+        const result = await response.json();
+        /*  location.reload();*/
+        if (response.ok) {
+            displayMessage(result.message);
+            loadCategories();
+            loadCategoriesForTable();
+            document.getElementById("category-name").value = "";
+
+        } else {
+            displayMessage(result.message, false);
+        }
+    } else {
+
+        const updatedName = document.getElementById('category-name').value;
+
+        const updatedCategory = {
+            id: id,
+            name: updatedName,
+            status: "Active",
+            createdDate: Date.now
+        };
+        const updateResponse = await fetch(`http://localhost:5211/api/categories/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedCategory)
+        });
+        const result = await updateResponse.json();
+        if (updateResponse.ok) {
+            displayMessage(result.message, true);
+            loadCategories();
+            loadCategoriesForTable();
+            document.getElementById("category-name").value = "";
+        } else {
+            displayMessage(result.message, false);
+        }
+    }
 }
+
+
+

@@ -25,7 +25,13 @@ namespace Lib2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
-            return await _context.Authors.Where(a=> a.Status == "Active" || a.Status == "Edit").ToListAsync();
+            var authors = await _context.Authors.Where(a=> a.Status == "Active" || a.Status == "Edit").ToListAsync();
+            return Ok(new ApiResponses<Author> 
+            {
+                Success = true, 
+                Message = "Successfully get", 
+                Data = authors 
+            });
         }
 
         // GET: api/Authors/5
@@ -40,84 +46,98 @@ namespace Lib2.Controllers
                 return NotFound();
             }
 
-            return author;
+            return Ok(new ApiResponse<Author>
+            {
+                Success = true,
+                Message = "Successfully get",
+                Data = author
+            });
         }
 
-       
-
-        // PUT: api/Authors/5
+        // POST: api/Authors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAuthor(int id, AuthorDto authorDto)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<Author>> PostAuthor(int id, [FromBody] Author author)
+
         {
-            // Find the author in the database
-            var author = await _context.Authors.FindAsync(id);
-            if (author == null)
+            if (author == null || string.IsNullOrWhiteSpace(author.Name))
             {
-                return NotFound();
+                return BadRequest(new ApiResponse<Author>
+                {
+                    Success = false,
+                    Message = "Author data is invalid. Name cannot be empty.",
+                    Data = author
+                });
             }
-
-            try
+            if (id == 0)
             {
-                // Update the author object with the values from the authorDto
-                author.Name = authorDto.Name;
-
-                // Set the author status to "Active" since it's being edited
-                author.Status = "Edit";
-
-                // Update the author in the database
-                _context.Authors.Update(author);
+                var authors = new Author
+                {
+                    Name = author.Name
+                };
+                _context.Authors.Add(authors);
                 await _context.SaveChangesAsync();
 
-                return NoContent();
+                return CreatedAtAction("GetAuthor", new { id = author.Id }, new ApiResponse<Author>
+                {
+                    Success = true,
+                    Message = "Author created successfully.",
+                    Data = author
+                });
+
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!AuthorExists(id))
+                var updateAuthor = await _context.Authors.FindAsync(id);
+                if (updateAuthor == null)
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+
+                // Update the author object with the values from the authorDto
+                updateAuthor.Name = author.Name;
+
+                // Set the author status to "Active" since it's being edited
+                updateAuthor.Status = "Active";
+
+                    // Update the author in the database
+                    _context.Authors.Update(updateAuthor);
+                    await _context.SaveChangesAsync();
+
+                    return Ok(new ApiResponse<Author>
+                    {
+                        Success = true,
+                        Message = "Author updated successfully.",
+                        Data = author
+                    });
+                } 
             }
-        }
-
-
-     
-        // POST: api/Authors
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<AuthorDto>> PostAuthor(AuthorDto authorDto)
-        
-        {
-            if (authorDto == null || string.IsNullOrWhiteSpace(authorDto.Name))
-            {
-                return BadRequest("Author data is invalid. Name cannot be empty.");
-            }
-
-            else
-            {
-                var author = new Author{
-                    Name = authorDto.Name
-                };
-                _context.Authors.Add(author);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction("GetAuthor", new { id = author.Id }, author);
-            }
-            
-        }
 
         // DELETE: api/Authors/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(int id)
         {
             var author = await _context.Authors.FindAsync(id);
+            var bookLists = await _context.Books
+                .Where(p => p.AuthorId == id)
+                .ToListAsync();
+
+            foreach (var bookList in bookLists)
+            {
+                bookList.Status = "Delete";
+            }
+            await _context.SaveChangesAsync(); //book save
+
+
             if (author == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse<Author> 
+                { 
+                    Success = false,
+                    Message = "Author not found.",
+                    Data = author
+                });
             }
 
             //soft delete
@@ -125,7 +145,12 @@ namespace Lib2.Controllers
             _context.Entry(author).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new ApiResponse<Author> 
+            { 
+                Success = true,
+                Message = "Author delete successfully.",
+                Data = author
+            });
         }
 
         private bool AuthorExists(int id)

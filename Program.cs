@@ -8,8 +8,9 @@ builder.Services.AddDbContext<LibraryDbContext>(options =>
 //builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    //options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-    options.JsonSerializerOptions.MaxDepth = 64; // Optional: Increase maximum depth if needed
+    /*options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;*/
+    options.JsonSerializerOptions.MaxDepth = 64;
+    options.JsonSerializerOptions.WriteIndented = true;// Optional: Increase maximum depth if needed
 });
 builder.Services.AddSwaggerGen();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

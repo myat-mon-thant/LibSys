@@ -25,7 +25,14 @@ namespace Lib2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            return await _context.Categories.Where(a => a.Status == "Active" || a.Status == "Edit").ToListAsync();
+            var categories= await _context.Categories.Where(a => a.Status == "Active" || a.Status == "Edit").OrderByDescending(x=>x.Id).ToListAsync();
+            return Ok(
+                new ApiResponses<Category>
+                {
+                    Success = true,
+                    Message = "Category get successfully",
+                    Data = categories
+                });
         }
 
         // GET: api/Categories/5
@@ -38,151 +45,103 @@ namespace Lib2.Controllers
 
             if (category == null || category.Status != "Active" && category.Status != "Edit")
             {
-                return NotFound();
+                return NotFound(new ApiResponse<Category>
+                {
+                    Success= false,
+                    Message = "Category not found",
+                    Data = null
+                });
             }
 
-            return category;
+            return Ok(new ApiResponse<Category>
+            {
+                Success = true,
+                Message = "Category get successfully",
+                Data = category
+            });
         }
 
-        // PUT: api/Categories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<Category>> PostCategory(int id, [FromBody] Category category)
         {
-            if (id != category.Id)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(category).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }*/
-
-        // POST: api/Categories
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
-        {
             if (category == null || string.IsNullOrWhiteSpace(category.Name))
             {
-                return BadRequest("Category data is invalid. Name cannot be empty.");
+                return BadRequest(new ApiResponse<Category>
+                {
+                    Success = false,
+                    Message = "Category data is invalid. Name cannot be empty.",
+                    Data = category
+                });
             }
-            else
+
+
+            var item = await _context.Categories.Where(x => x.Status == "Active" && x.Name == category.Name).FirstOrDefaultAsync();
+            if (item != null)
             {
-                _context.Categories.Add(category);
+                return BadRequest(new ApiResponse<Category>
+                {
+                    Success = false,
+                    Message = "This Category name do not allow!",
+                    Data = item
+                });
+            }
+           
+                var updateCategory = await _context.Categories.FindAsync(id);
+                if (updateCategory == null)
+                {
+                    return BadRequest(new ApiResponse<Category>
+                    {
+                        Success = false,
+                        Message = "Category data is invalid. Name cannot be empty.",
+                        Data = null
+                    });
+                }
+
+                // Update the category object with the values from the categoryDto
+                updateCategory.Name = category.Name;
+
+                // Set the category status to "Active" since it's being edited
+                updateCategory.Status = "Active";
+                _context.Categories.Update(updateCategory);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetCategory", new { id = category.Id }, category);
-            }
-            
-        }*/
-
-        /*[HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
-        {
-            if (id != category.Id)
-            {
-                return BadRequest();
-            }
-
-            var existingCategory = await _context.Categories.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
-
-            if (existingCategory == null)
-            {
-                return NotFound();
-            }
-
-            // Preserve CreatedDate
-            category.CreatedDate = existingCategory.CreatedDate;
-
-            _context.Entry(category).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
+                return Ok(new ApiResponse<Category>
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                    Success = true,
+                    Message = "Category updated successfully.",
+                    Data = category
+                });
             }
+        
+        
 
-            return NoContent();
-        }
-*/
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, CategoryDto categoryDto)
-        {
-            // Find the category in the database
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
 
-            // Update the category object with the values from the categoryDto
-            category.Name = categoryDto.Name;
 
-            // Set the category status to "Active" since it's being edited
-            category.Status = "Edit";
 
-            // Update the category in the database
-            _context.Entry(category).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
         [HttpPost]
         public async Task<ActionResult<CategoryDto>> PostCategory(CategoryDto categoryDto)
         {
             if (categoryDto == null || string.IsNullOrWhiteSpace(categoryDto.Name))
             {
-                return BadRequest("Category data is invalid. Name cannot be empty.");
+                return BadRequest(new ApiResponse<CategoryDto>
+                {
+                    Success = false,
+                    Message = "Category data is invalid. Name cannot be empty.",
+                    Data = categoryDto
+                });
             }
 
-            var item = await _context.Categories.Where(x => x.Status == "Active" && x.Name==categoryDto.Name).FirstOrDefaultAsync();
+            var item = await _context.Categories.Where(x => x.Status == "Active" && x.Name == categoryDto.Name).FirstOrDefaultAsync();
             if (item != null)
             {
-                return BadRequest("This Category name do not allow!");
+                return BadRequest(new ApiResponse<Category>
+                {
+                    Success = false,
+                    Message = "This Category name do not allow!",
+                    Data = item
+                });
             }
             var category = new Category
             {
@@ -194,146 +153,79 @@ namespace Lib2.Controllers
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
-        }
+            int latestId = category.Id;
 
-        /*[HttpPost]
-        public async Task<ActionResult<CategoryDto>> PostCategory(CategoryDto categoryDto)
-        {
-            if (categoryDto == null || string.IsNullOrWhiteSpace(categoryDto.Name))
+            
+            if (categoryDto.book != null)    //Want to add new Book
             {
-                return BadRequest("Category data is invalid. Name cannot be empty.");
-            }
-
-            // Check if a category with the same name exists
-            var existingCategory = await _context.Categories
-                .FirstOrDefaultAsync(c => c.Name == categoryDto.Name);
-
-            if (existingCategory != null)
-            {
-                // If the category exists but is not active, update its status and other properties
-                if (existingCategory.Status != "Active")
+                foreach (var bookDto in categoryDto.book)
                 {
-                    existingCategory.Status = "Active"; // Update the status to Active
-                    existingCategory.CreatedDate = DateTime.Now; // Update the created date
-                                                                 // Update other properties as needed
+                    var New_book = new Book
+                    {
+                        Title = bookDto.Title,
+                        AuthorId = bookDto.AuthorId,
+                        CategoryId = latestId,
+                        PublicationDate = bookDto.PublicationDate,
+                        Price = bookDto.Price,
+                        Status = "Active", // Set the default status
+                        CreatedDate = DateTime.Now // Set the created date
+                    };
+                    _context.Books.Add(New_book);
                     await _context.SaveChangesAsync();
-                    return Ok(existingCategory); // Return the updated category
-                }
-                else
-                {
-                    return BadRequest("A category with the same name already exists and is active.");
+
                 }
             }
-            else
+
+            //return CreatedAtAction("GetCategory", new { id = category.Id }, new ApiResponse<Category>
+            //{
+            //    Success = true,
+            //    Message = "Category created successfully.",
+            //    Data = category
+            //});
+
+            return Ok(new ApiResponse<CategoryDto>
             {
-                // Create a new category if it does not exist
-                var category = new Category
-                {
-                    Name = categoryDto.Name,
-                    Status = "Active", // Set default status
-                    CreatedDate = DateTime.Now // Set created date
-                };
-
-                _context.Categories.Add(category);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction("GetCategory", new { id = category.Id }, category);
-            }
-        }*/
-        /*[HttpPost]
-        public async Task<ActionResult<CategoryDto>> PostCategory(CategoryDto categoryDto)
-        {
-            if (categoryDto == null || string.IsNullOrWhiteSpace(categoryDto.Name))
-            {
-                return BadRequest("Category data is invalid. Name cannot be empty.");
-            }
-
-            // Check if an active category with the same name exists
-            var existingActiveCategory = await _context.Categories
-                .FirstOrDefaultAsync(c => c.Name == categoryDto.Name && c.Status == "Active");
-
-            if (existingActiveCategory != null)
-            {
-                return BadRequest("A category with the same name already exists and is active.");
-            }
-
-            // Check if a category with the same name exists but is not active
-            var existingInactiveCategory = await _context.Categories
-                .FirstOrDefaultAsync(c => c.Name == categoryDto.Name && c.Status != "Active");
-
-            if (existingInactiveCategory != null)
-            {
-                // If an inactive category with the same name exists, create a new category with the same name
-                var newCategory = new Category
-                {
-                    Name = categoryDto.Name,
-                    Status = "Active", // Set default status
-                    CreatedDate = DateTime.Now // Set created date
-                };
-
-                _context.Categories.Add(newCategory);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction("GetCategory", new { id = newCategory.Id }, newCategory);
-            }
-            else
-            {
-                // If no category with the same name exists, create a new category
-                var category = new Category
-                {
-                    Name = categoryDto.Name,
-                    Status = "Active", // Set default status
-                    CreatedDate = DateTime.Now // Set created date
-                };
-
-                _context.Categories.Add(category);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction("GetCategory", new { id = category.Id }, category);
-            }
-        }*/
-
-
-        /*[HttpPost]
-        public async Task<ActionResult<CategoryDto>> PostCategory(CategoryDto categoryDto)
-        {
-           var item = await _context.Categories.Where(x=>x.Name== categoryDto.Name  || x.Status=="Active").FirstOrDefaultAsync();
-
-            if (item != null || item.Id == 0)
-            {
-                var data = new Category()
-                {
-                    Name = categoryDto.Name,
-                    Status = "Active",
-                    CreatedDate = DateTime.Now,
-                };
-                _context.Categories.Add(data);
-                await _context.SaveChangesAsync();
-                return Ok("Added successfully");
-
-            }
-
-            return BadRequest();
+                Success = true,
+                Message = "Category created Successfully",
+                Data = categoryDto
+            });
 
         }
-*/
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _context.Categories.FindAsync(id);
+            var bookLists = await _context.Books
+                .Where(p => p.CategoryId == id)
+                .ToListAsync();
+
+            foreach (var bookList in bookLists)
+            {
+                bookList.Status = "Delete";
+            }
+            await _context.SaveChangesAsync(); //book save
             if (category == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse<Category> 
+                {
+                    Success = false,
+                    Message = "Category not found",
+                    Data = category
+                });
             }
 
             // Soft delete by changing the status
             category.Status = "Delete";
             _context.Entry(category).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(); // category save
 
-            return NoContent();
+            return Ok(new ApiResponse<Category>
+            {
+                Success = true,
+                Message = "Category deleted successfully.",
+                Data = category
+            });
         }
 
         private bool CategoryExists(int id)

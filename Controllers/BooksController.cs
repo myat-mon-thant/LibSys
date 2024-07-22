@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lib2.Models;
 using Lib2.DTO;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Lib2.Controllers
 {
@@ -25,7 +26,21 @@ namespace Lib2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
-            return await _context.Books.Where(a => a.Status == "Active" || a.Status == "Edit").ToListAsync();
+            var books = await _context.Books.Where(a => a.Status == "Active" || a.Status == "Edit").ToListAsync();
+            /*return Ok(new ApiResponses<Book>
+            {
+                Success = true,
+                Message = "Book Get Successfully",
+                Data = books
+            });*/
+
+            return Ok(new
+            {
+                Success = true,
+                Message = "Book Get Successfully",
+                Data = books
+            });
+
         }
 
         // GET: api/Authors/5
@@ -37,115 +52,93 @@ namespace Lib2.Controllers
 
             if (book == null || book.Status != "Active" && book.Status != "Edit")
             {
-                return NotFound();
+                return NotFound(new ApiResponse<Book> 
+                { 
+                    Success = false,
+                    Message = "Books not found",
+                    Data = book
+                });
             }
 
-            return book;
+            return Ok(new ApiResponse<Book>
+            {
+                Success = true,
+                Message = "Book Get Successfully",
+                Data = book
+            });
         }
 
-        /*// PUT: api/Books/5
+       
+        // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBook(int id, Book book)
+        
+        public async Task<IActionResult> PutBook(int id, BookDto bookDto)
         {
-            if (id != book.Id)
+            if (bookDto == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(book).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }*/
-
-        // PUT: api/Books/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBook(int id, BookDto bookDto)
-        {
-            // Find the author in the database
+            // Find the book in the database
             var book = await _context.Books.FindAsync(id);
             if (book == null)
             {
                 return NotFound();
             }
 
-            // Update the author object with the values from the authorDto
+            /*// Check if the author and category exist
+            var author = await _context.Authors.FindAsync(bookDto.AuthorId);
+            if (author == null)
+            {
+                return BadRequest();
+            }
+
+            var category = await _context.Categories.FindAsync(bookDto.CategoryId);
+            if (category == null)
+            {
+                return BadRequest();
+            }
+*/
+            // Update the book object with the values from the bookDto
             book.Title = bookDto.Title;
             book.AuthorId = bookDto.AuthorId;
             book.CategoryId = bookDto.CategoryId;
             book.PublicationDate = bookDto.PublicationDate;
             book.Price = bookDto.Price;
-
-            // Set the author status to "Active" since it's being edited
+            book.CreatedDate = DateTime.Now;
             book.Status = "Edit";
 
-            // Update the author in the database
+            // Update the book in the database
             _context.Entry(book).State = EntityState.Modified;
-
-            try
+            await _context.SaveChangesAsync();
+            return Ok(new
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                Success = true,
+                Message = "Book updated successfully.",
+                Data = book
+            });
 
-            return NoContent();
         }
 
-        // POST: api/Books
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<Book>> PostBook([FromBody]BookDto book)
-        //{
-        //    _context.Books.Add(book);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetBook", new { id = book.Id }, book);
-        //}
-
+       
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook([FromBody] BookDto bookDto)
         {
-            if (bookDto == null)
-                return BadRequest("Book data is required.");
+            /*if (bookDto == null)
+                
+            return BadRequest();*/
 
             // Check if the author and category exist
-            var author = await _context.Authors.FindAsync(bookDto.AuthorId);
+            /*var author = await _context.Authors.FindAsync(bookDto.AuthorId);
             if (author == null)
-                return BadRequest("Invalid AuthorId.");
+                return BadRequest();
 
             var category = await _context.Categories.FindAsync(bookDto.CategoryId);
-            if (category == null)
-                return BadRequest("Invalid CategoryId.");
-
+            if (category == null)    
+                return BadRequest();*/
             // Create the book entity
-            var book = new Book
+            var book = new Book()
             {
                 Title = bookDto.Title,
                 AuthorId = bookDto.AuthorId,
@@ -155,11 +148,19 @@ namespace Lib2.Controllers
                 Status = "Active", // Set the default status
                 CreatedDate = DateTime.Now // Set the created date
             };
-
+            Console.WriteLine("book", book);
 
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetBook), new { id = book.Id }, book);
+           
+            return Ok(
+                new ApiResponse<Book> 
+                { 
+                    Success = true,
+                    Message = "Books are created successfully.",
+                    Data = book
+                });
+            
         }
 
 
@@ -170,14 +171,24 @@ namespace Lib2.Controllers
             var book = await _context.Books.FindAsync(id);
             if (book == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse<Book> 
+                {
+                    Success = false,
+                    Message = "Books not found",
+                    Data = book
+                });
             }
             book.Status = "Delete";
             _context.Entry(book).State = EntityState.Modified;
             /*_context.Books.Remove(book);*/
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new ApiResponse<Book> 
+            {
+                Success = true,
+                Message = "Books are deleted successfully.",
+                Data = book
+            });
         }
 
         private bool BookExists(int id)

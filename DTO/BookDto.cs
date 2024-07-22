@@ -1,7 +1,10 @@
-﻿namespace Lib2.DTO
+﻿using Microsoft.OpenApi.Writers;
+
+namespace Lib2.DTO
 {
     public class BookDto
     {
+        public int? Id { get; set; }
         public string Title { get; set; }
         public int AuthorId { get; set; }
         public int CategoryId { get; set; }
