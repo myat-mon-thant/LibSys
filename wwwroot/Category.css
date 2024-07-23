@@ -1,0 +1,61 @@
+﻿body {
+    background-image: url("category.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.navbar-nav .nav-link.active {
+    background-color: lightgoldenrodyellow; /* Change this to the desired color */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.float-right {
+    float: right;
+}
+
+.mb-4 {
+    margin-bottom: 20px;
+}
+
+.mt-4 {
+    margin-top: 20px;
+}
+
+.sticky-header {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1; /* Ensures the header stays on top of other content */
+}
+
+.btn-add {
+    background-color: lightgoldenrodyellow;
+    color: dark;
+    border-color: yellow;
+}
+
+    .btn-add:hover {
+        background-color: white;
+        color: dark;
+        border-color: yellow;
+    }
+
+.btn-dark:hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+.custom-card {
+    max-width: 800px; /* Adjust the max-width as needed */
+    margin-left: 0; /* Center the card horizontally */
+}

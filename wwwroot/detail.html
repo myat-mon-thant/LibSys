@@ -7,26 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Details</title>
     <link rel="stylesheet" href="styles.css" />
+
     <link rel="stylesheet" href="tables.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../assets//css/bootstrap.css">
+    <link rel="stylesheet" href="Detail.css" />
+    <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/Font-Awesome-6.x/css/all.css">
+    <script src="assets/dist/js/jspdf.umd.min.js"></script>
+   
 </head>
-<body style="background-color: skyblue;">
+<body>
     <div class="container mt-5">
         <h1 class="mb-4">Book Details</h1>
         <div id="bookDetails" class="card p-4"></div>
     </div>
     <div class="row justify-content-center mt-3">
-        <div class="col-auto">
-            <button id="cancelButton" class="btn btn-add">Cancel</button>
+        <div class="col-md-10">
+            <button id="cancelButton" class="btn btn-dark">Cancel</button>
             <button id="downloadButton" class="btn btn-danger">
                 <i class="fas fa-file-pdf"></i> Pdf
             </button>
         </div>
     </div>
     <!-- Add the jsPDF library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>-->
     <script src="scripts.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
+
 </html>

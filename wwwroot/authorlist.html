@@ -4,13 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Author List</title>
-    <!--<link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous" />-->
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="tables.css" />
-    <link rel="stylesheet" href="../assets//css/bootstrap.css">
+   <link rel="stylesheet" href="tables.css"/>
+    <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="assets/Font-Awesome-6.x/css/all.css"/>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/alertifyjs/build/css/alertify.min.css"
@@ -19,75 +15,54 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/alertifyjs/build/css/themes/default.min.css"
     />
-    <style>
-      body {
-        background-image: url("indexpage.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }
-
-      .nav-link:hover {
-        background-color: skyblue;
-      }
-
-      .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #f8f9fa;
-        padding: 5px 0;
-        text-align: center;
-      }
-    </style>
+      <link rel="stylesheet" href="Author.css"/>
+    
   </head>
   <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div style="color: deepskyblue; font-weight: bold" class="container">
-              <h2 class="navbar-brand">Author</h2>
+              <h2 class="navbar-brand"><img src="booklogo.png" alt="Book Logo" style="height: 50px; margin-right: 0;">Author</h2>
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                      <a class="nav-link" href="home.html">Home</a>
+                      <a class="nav-link" href="home.html"><i class="fas fa-home"></i>Home</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="booklist.html">Book List</a>
-                  </li>
-                  <li class="nav-item active">
-                      <a class="nav-link" href="authorlist.html">Author List</a>
+                      <a class="nav-link" href="booklist.html"><i class="fas fa-book"></i>Book List</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="category.html">Category</a>
+                      <a class="nav-link active" href="authorlist.html"><i class="fas fa-user"></i>Author List</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="category.html"><i class="fas fa-list"></i>Category</a>
                   </li>
               </ul>
           </div>
       </nav>
       <div class="container mt-3">
-          <h2 class="text-light">Author List</h2>
-          <div id="messages"></div>
-        
-          <div id="add-author-form" style="display:block">
-              <input type="hidden" name="hiddenAuthor" id="hiddenAuthor" value="0"/>
-              <input type="text"
-                     id="author-name"
-                     class="form-control"
-                     placeholder="Author Name" />
-              <button type="button"
-                      class="btn btn-outline-light mt-2 btn-add"
-                      onclick="addAuthor()">
-                  Add
-              </button>
-             
+          <div class="card mb-4 custom-card">
+              <div class="card-header">
+                  <h5 class="card-title">Add Author</h5>
+              </div>
+              <div class="card-body">
+                  <div id="add-author-form">
+                      <input type="hidden" name="hiddenAuthor" id="hiddenAuthor" value="0" />
+                      <div class="mb-3">
+                          <label for="author-name" class="form-label" style="font-weight:bold">Author Name</label>
+                          <input type="text" id="author-name" class="form-control" placeholder="Author Name" />
+                      </div>
+                      <button type="button" class="btn btn-add mt-2 btn-add text-dark" onclick="addAuthor()">Add</button>
+                  </div>
+              </div>
           </div>
           <div class="table-responsive">
-              <table id="authors" class="table">
-                  <thead>
+              <table id="authors" class="table table-bordered">
+                  <thead class="table-light">
                       <tr>
                           <th scope="col">ID</th>
                           <th scope="col">Name</th>
                           <th scope="col">Created Date</th>
                           <th scope="col">Status</th>
-                          <!-- <th scope="col">Action</th> -->
+
                       </tr>
                   </thead>
                   <tbody id="authors-table-body"></tbody>
@@ -101,7 +76,7 @@
       </footer>
       <script src="scripts.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
-      <script src="../assets/js/bootstrap.min.js"></script>
+      <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
   </body>
 </html>

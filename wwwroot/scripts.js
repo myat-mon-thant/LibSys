@@ -371,9 +371,9 @@ async function loadBooks() {
         cell5.textContent = new Date(book.publicationDate).toLocaleDateString();
         cell6.textContent = book.price;
         cell7.textContent = new Date(book.createdDate).toLocaleDateString(); // Display created date
-        cell8.innerHTML = `<button class="btn btn-add" onclick="redirectToEdit(${book.id})">Edit</button>
-                            <button class="btn btn-add" onclick="deleteBook(${book.id})">Delete</button>
-                            <button class="btn btn-add" onclick="redirectToDetail(${book.id})">Details</button>`;
+        cell8.innerHTML = `<button class="btn btn-link text-dark" onclick="redirectToEdit(${book.id})">Edit</button>
+                            <button class="btn btn-link text-danger" onclick="deleteBook(${book.id})">Delete</button>
+                            <button class="btn btn-link text-info" onclick="redirectToDetail(${book.id})">Details</button>`;
     }
 
 }
@@ -384,8 +384,25 @@ async function loadBooks() {
 function redirectToDetail(bookId) {
     window.location.href = `detail.html?id=${bookId}`;
 }
-function redirectToEdit(bookId) {
-    window.location.href = `edit.html?bookId=${bookId}`;
+async function redirectToEdit(bookId) {
+    document.getElementById("add-book-form").style.display = "block";
+    const response = await fetch(`http://localhost:5211/api/books/${bookId}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch book data');
+    }
+    const book = await response.json();
+
+    await loadAuthorsForSelectBox();
+    await loadCategories();
+    document.getElementById('book-title').value = book.data.title;
+    document.getElementById("book-author").value = book.data.authorId;
+    document.getElementById("book-category").value = book.data.categoryId;
+    const publicationDate = book.data.publicationDate.split('T')[0];
+    document.getElementById("publicationDate").value = publicationDate;
+    document.getElementById("price").value = book.data.price;
+
+    document.getElementById('hiddenBook').value = bookId;
+
 }
 // Function to delete a book
 async function deleteBook(bookId) {
@@ -402,73 +419,7 @@ async function deleteBook(bookId) {
         console.error('Failed to delete author:', await response.text());
     }
 }
-//Function to load book data into the form for editing
-async function loadBookForEdit() {
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const bookId = parseInt(urlParams.get('bookId'));
-
-    if (!bookId) {
-        console.error("No bookId found in URL");
-        return;
-    }
-
-    const response = await fetch(`http://localhost:5211/api/books/${bookId}`);
-    const book = await response.json();
-    
-
-    // Load author and category data for select boxes
-    await loadAuthorsForSelectBox();
-    await loadCategories();
-
-    // Populate the form fields with the book data
-    document.getElementById("book-title").value = book.data.title;
-    document.getElementById("book-author").value = book.data.authorId;
-    document.getElementById("book-category").value = book.data.categoryId;
-    const publicationDate = book.data.publicationDate.split('T')[0];
-    document.getElementById("book-publication-date").value = publicationDate;
-    document.getElementById("book-price").value = book.data.price;
-    // Add submit event listener to the form
-    document.getElementById("editBookForm").addEventListener("submit", async function (event) {
-        event.preventDefault();
-
-        const updatedBook = {
-            title: document.getElementById("book-title").value,
-            authorId: document.getElementById("book-author").value,
-            categoryId: document.getElementById("book-category").value,
-            publicationDate: document.getElementById("book-publication-date").value,
-            price: document.getElementById("book-price").value,
-        };
-       
-        const updateResponse = await fetch(`http://localhost:5211/api/books/${bookId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedBook)
-        });
-        const result = await updateResponse.json();
-       
-        if (updateResponse.ok) {
-
-            // Construct the URL with the alert message as a query parameter
-
-            Swal.fire({
-                title: "Update",
-                text: result.message,
-                icon: "success"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = `booklist.html`;
-                }
-            });
-
-        } else {
-            /*displayMessage(result.message, false);*/
-            console.error("Failed to update book:", await updateResponse.text());
-        }
-    });
-}
 //Function to load and display the details of a book
 async function loadBookDetails(bookId) {
     try {
@@ -514,6 +465,7 @@ async function loadBookDetails(bookId) {
     }
 }
 // Function to download book details as PDF
+
 function downloadBookDetailsAsPDF(book, author, category) {
     // Access the jsPDF library
     const { jsPDF } = window.jspdf;
@@ -662,8 +614,8 @@ async function loadAuthorsForTable() {
                 cell2.textContent = author.name;
                 cell3.textContent = new Date(author.createdDate).toLocaleDateString(); // Display created date
                 cell4.innerHTML = `
-          <button class="btn btn-add" onclick="editAuthor(${author.id})">Edit</button>
-          <button class="btn btn-add" onclick="deleteAuthor(${author.id})">Delete</button>`;
+          <button class="btn btn-link text-dark" onclick="editAuthor(${author.id})">Edit</button>
+          <button class="btn btn-link text-danger" onclick="deleteAuthor(${author.id})">Delete</button>`;
             });
         } else {
             console.error('Expected an array of authors, but got:', authors);
@@ -688,6 +640,7 @@ async function editAuthor(authorId) {
     document.getElementById('hiddenAuthor').value = authorId;
 
 }
+
 
 // Function to delete an author
 async function deleteAuthor(authorId) {
@@ -724,32 +677,25 @@ async function loadCategoriesForTable() {
         // Clear existing table rows
         categoriesTableBody.innerHTML = "";
 
+        // Populate the table with author data
         if (Array.isArray(categories)) {
-            // Populate the table with category data
-            categories.forEach((category) => {
+            categories.forEach((category, index) => {
                 const row = categoriesTableBody.insertRow();
-                const nameCell = row.insertCell();
-                const dateCell = row.insertCell(); // New cell for createdDate
-                const actionCell = row.insertCell();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
+                const displayedId = index + 1;
 
-                const link = document.createElement("a");
-                link.href = "#"; // You can set the link href to navigate to a specific page
-                link.textContent = category.name;
-                link.classList.add("category-link", "text-white");
-                //link.onclick = (event) => {
-                //    event.preventDefault(); // Prevent default link behavior
-                //    handleCategoryClick(category.id);
-                //}; // Handle the click event
-
-                nameCell.appendChild(link);
-                const formattedDate = new Date(category.createdDate).toLocaleDateString();
-                dateCell.textContent = formattedDate; // Set the createdDate cell
-                actionCell.innerHTML = `
-          <button class="btn btn-add" onclick="editCategory(${category.id})">Edit</button>
-          <button class="btn btn-add" onclick="deleteCategory(${category.id})">Delete</button>`;
+                cell1.textContent = displayedId;
+                cell2.textContent = category.name;
+                cell3.textContent = new Date(category.createdDate).toLocaleDateString(); // Display created date
+                cell4.innerHTML = `
+          <button class="btn btn-link text-dark" onclick="editCategory(${category.id})">Edit</button>
+          <button class="btn btn-link text-danger" onclick="deleteCategory(${category.id})">Delete</button>`;
             });
         } else {
-            console.error('Expected an array of categories, but got:', categories);
+            console.error('Expected an array of authors, but got:', authors);
         }
     } catch (error) {
         console.error('Error loading categories:', error);
@@ -829,14 +775,17 @@ async function loadCategories() {
     }
 }
 
+
+
 function addBook() {
+    const id = document.getElementById("hiddenBook").value;
     const title = document.getElementById("book-title").value;
     const authorId = document.getElementById("book-author").value;
     const categoryId = document.getElementById("book-category").value;
     const publicationDate = document.getElementById("publicationDate").value;
     const price = document.getElementById("price").value;
 
-   
+
     if (isNaN(authorId) || isNaN(categoryId)) {
         console.error("Author ID and Category ID must be integers.");
         return;
@@ -847,9 +796,11 @@ function addBook() {
         AuthorId: authorId,
         CategoryId: categoryId,
         PublicationDate: publicationDate,
-        Price: price
+        Price: price,
+        Status: "Active",
+        createdDate:Date.now
     };
-    fetch("http://localhost:5211/api/books", {
+    fetch(`http://localhost:5211/api/books/${id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -868,12 +819,13 @@ function addBook() {
                 document.getElementById("publicationDate").value = "";
                 document.getElementById("price").value = "";
                 loadBooks();
-               
+
                 // Optionally, reset the form or update the UI
             }
         })
         .catch((error) => console.error("Error:", error));
 }
+
 
 
 async function addAuthor() {

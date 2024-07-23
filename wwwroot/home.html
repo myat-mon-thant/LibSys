@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library Management System</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="../assets//css/bootstrap.css">
+    <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/Font-Awesome-6.x/css/all.css"/>
     <style>
         body {
-            background-image: url('indexpage.jpg');
+            background-image: url('index.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
         .nav-link:hover {
-            background-color: skyblue;
+            background-color: lightgoldenrodyellow;
         }
+        .navbar-nav .nav-link.active {
+            background-color: lightgoldenrodyellow; /* Change this to the desired color */
+        }
+
         .footer {
             position: fixed;
             bottom: 0;
@@ -29,20 +34,20 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div style="color: deepskyblue; font-weight: bold;" class="container">
-            <h2 class="navbar-brand">Library Management System</h2>
+        <div style="color: deepskyblue; font-weight: bold" class="container">
+            <h2 class="navbar-brand"><img src="booklogo.png" alt="Book Logo" style="height: 50px; margin-right: 0;">Library Management System</h2>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="home.html">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link active" href="home.html"><i class="fas fa-home"></i>Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="booklist.html">Book List</a>
+                    <a class="nav-link" href="booklist.html"><i class="fas fa-book"></i>Book List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="authorlist.html">Author List</a>
+                    <a class="nav-link" href="authorlist.html"><i class="fas fa-user"></i>Author List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="category.html">Category</a>
+                    <a class="nav-link" href="category.html"><i class="fas fa-list"></i>Category</a>
                 </li>
             </ul>
         </div>
@@ -58,6 +63,6 @@
         </div>
     </footer>
     <script src="scripts.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library Management System</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="tables.css" />
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>-->
+    
 
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
 
@@ -15,7 +13,7 @@
     <!-- Include Alertify default theme -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs/build/css/themes/default.min.css" />
     <link rel="stylesheet" href="../assets/Font-Awesome-6.x/css/all.css">
-    <link rel="stylesheet" href="../assets//css/bootstrap.css">
+    <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css">
 
 
     <style>
@@ -27,69 +25,112 @@
             padding: 3px 0;
             text-align: center;
         }
+        .sticky-header {
+            position: -webkit-sticky; /* For Safari */
+            position: sticky;
+            top: 0;
+            z-index: 1; /* Ensures the header stays on top of other content */
+        }
+        .btn-add {
+            background-color: lightgoldenrodyellow;
+            color: dark;
+            border-color: yellow;
+        }
+        .nav-link:hover {
+            background-color: lightgoldenrodyellow;
+        }
+        .navbar-nav .nav-link.active {
+            background-color: lightgoldenrodyellow; /* Change this to the desired color */
+        }
+
+        .btn-add:hover {
+            background-color: white;
+            color: dark;
+            border-color: yellow;
+        }
+        .custom-card {
+            max-width: 500px; /* Adjust the max-width as needed */
+            margin-left: 0; /* Center the card horizontally */
+            
+        }
+        .custom-search-input {
+            width: 300px; /* Adjust the width as needed */
+            /* Alternatively, use percentage if you want it responsive */
+            /* width: 100%; */
+        }
+        body {
+            background-image: url('wallpaperflare.com_wallpaper (1).jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .table thead th {
+            background-color: lightgoldenrodyellow;
+        }
     </style>
 </head>
 
-<body style="background-color: skyblue;">
+<body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div style="color: deepskyblue; font-weight: bold;" class="container">
-            <h2 class="navbar-brand">Book</h2>
-            <ul class="navbar-nav ml-auto">
+            <h2 class="navbar-brand"><img src="booklogo.png" alt="Book Logo" style="height: 50px; margin-right: 0;">Book</h2>
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="home.html">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="booklist.html">Book List</a>
+                    <a class="nav-link" href="home.html"><i class="fas fa-home"></i>Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="authorlist.html">Author List</a>
+                    <a class="nav-link active" href="booklist.html"><i class="fas fa-book"></i>Book List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="category.html">Category</a>
+                    <a class="nav-link" href="authorlist.html"><i class="fas fa-user"></i>Author List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="category.html"><i class="fas fa-list"></i>Category</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container mt-4">
-        <div id="messages"></div>
-        <div class="form-group">
-            <label style="font-weight:bold;" for="book-title">Book Title</label>
-            <input type="text" class="form-control" id="book-title" placeholder="Enter book title">
-        </div>
-        <div class="form-group">
-            <label style="font-weight:bold;" for="book-author">Author</label>
-            <select class="form-control" id="book-author"></select>
-        </div>
-        <div class="form-group">
-            <label style="font-weight:bold;" for="book-category">Category</label>
-            <select class="form-control" id="book-category"></select>
-        </div>
-        <div class="form-group">
-            <label style="font-weight:bold;" for="publicationDate">Publication Date</label>
-            <input type="date" class="form-control" id="publicationDate" placeholder="Enter Publication Date">
-        </div>
-        <div class="form-group">
-            <label style="font-weight:bold;" for="price">Price</label>
-            <input type="text" class="form-control" id="price" placeholder="Enter book price">
+        <div class="card mb-4 custom-card">
+            <div class="card-header">
+                <h5 class="card-title">Add Book</h5>
+            </div>
+            <div class="card-body">
+                <div id="add-book-form">
+                    <input type="hidden" name="hiddenBook" id="hiddenBook" value="0" />
+                    <div class="mb-2">
+                        <label for="book-title" class="form-label">Book Title</label>
+                        <input type="text" class="form-control" id="book-title" placeholder="Enter book title">
+                    </div>
+                    <div class="mb-2">
+                        <label for="book-author" class="form-label">Author</label>
+                        <select class="form-select" id="book-author"></select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="book-category" class="form-label">Category</label>
+                        <select class="form-select" id="book-category"></select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="publicationDate" class="form-label">Publication Date</label>
+                        <input type="date" class="form-control" id="publicationDate" placeholder="Enter Publication Date">
+                    </div>
+                    <div class="mb-2">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" class="form-control" id="price" placeholder="Enter book price">
+                    </div>
 
-        </div>
-        
-        <button type="submit" class="btn btn-add" onclick="addBook()">Submit</button>
-        <button class="btn btn-add" onclick="exportTableToExcel()">Export to Excel</button>
-        <div class="input-group mt-3">
-
-            <div class="input-group-append">
-                <div class="input-group mt-3">
-                    <!--<input type="search" class="form-control" id="searchInput" placeholder="Search.." aria-label="Search books">-->
-                    <input type="search" id="searchInput" class="form-control" placeholder="Search...">
-
+                    <button type="button" class="btn btn-add mt-2" onclick="addBook()">Submit</button>
+                    <button type="button" class="btn btn-add mt-2" onclick="exportTableToExcel()">Export to Excel</button>
                 </div>
             </div>
         </div>
-
-        <div class="table-responsive mt-3">
-            <table id="booklists" class="table">
-                <thead>
+        <div class="input-group custom-search-input mt-3">
+            <input type="search" id="searchInput" class="form-control far fa-search" placeholder="Search...">
+        </div><br/>
+        <div class="table-responsive" style="max-height: 400px;">
+            <table id="booklists" class="table table-bordered">
+                <thead class="table sticky-header">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
@@ -99,7 +140,6 @@
                         <th scope="col">Price</th>
                         <th scope="col">Created Date</th>
                         <th scope="col">Status</th>
-
                     </tr>
                 </thead>
                 <tbody id="booksTable"></tbody>
@@ -109,13 +149,9 @@
 
     <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    
-    
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
-<!--<footer class="footer bg-light">
-    <div class="container">
-        <p>&copy; 2024 Library Management System By MMT &#128218;</p>
-    </div>
-</footer>-->
+
+
 </html>

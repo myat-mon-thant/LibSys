@@ -1,66 +1,62 @@
-/*@import "~bootstrap/dist/css/bootstrap.min.css";*/
-
 /* styles.css */
 body {
     font-family: Arial, sans-serif;
-    
 }
 
-/*nav {
-  background-color: #333;
-  overflow: hidden;
-}*/
+/* Navbar styles */
 .nav-link:hover {
-    background-color: skyblue;
+    background-color: lightgoldenrodyellow;
 }
 
 nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-nav ul li {
-  float: left;
-}
+    nav ul li {
+        float: left;
+    }
 
-nav ul li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 
-}
+            nav ul li a:hover {
+                background-color: lightgoldenrodyellow;
+            }
 
-nav ul li a:hover {
-  background-color: #111;
-}
-
+/* Content and Form styles */
 #content {
-  padding: 20px;
+    padding: 20px;
 }
 
 #add-book-form,
 #add-author-form,
 #add-category-form {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 #books,
 #authors,
 #categories {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
-#books li,
-#authors li,
-#categories li {
-  margin: 5px 0;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
+    #books li,
+    #authors li,
+    #categories li {
+        margin: 5px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+/* Categories Links */
 #categories-links {
     list-style-type: none; /* Remove bullets */
     padding: 0;
@@ -78,10 +74,18 @@ nav ul li a:hover {
             color: #0056b3; /* Change color on hover */
         }
 
+/* Category Heading */
 .category-heading {
     color: #333; /* Color for the heading */
     margin-bottom: 10px; /* Space between heading and links */
 }
 
-
-/* styles.css */
+/* Footer styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 3px 0;
+    text-align: center;
+}

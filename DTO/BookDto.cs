@@ -12,5 +12,9 @@ namespace Lib2.DTO
         public DateTime? PublicationDate { get; set; }
 
         public int? Price { get; set; }
+
+        public string Status { get; set; } = null!;
+
+        public DateTime CreatedDate { get; set; }
     }
 }

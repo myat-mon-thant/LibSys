@@ -1,0 +1,47 @@
+﻿body {
+    background-image: url("authorlist.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.btn-add:hover {
+    background-color: white;
+    color: dark;
+    border-color: yellow;
+}
+
+.btn-add {
+    background-color: lightgoldenrodyellow;
+    color: dark;
+    border-color: yellow;
+}
+
+.nav-link:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: lightgoldenrodyellow; /* Change this to the desired color */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.sticky-header {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1; /* Ensures the header stays on top of other content */
+}
+
+.custom-card {
+    max-width: 500px; /* Adjust the max-width as needed */
+    margin-left: 0; /* Align card to the left */
+} 

@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library Management System</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="../assets//css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     -->
+    <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/Font-Awesome-6.x/css/all.css" />
     <style>
-      body {
-        background-image: url("indexpage.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }
+        body {
+            background-image: url("index.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
 
-      .nav-link:hover {
-        background-color: skyblue;
-      }
-      .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #f8f9fa;
-        padding: 5px 0;
-        text-align: center;
-      }
+        .nav-link:hover {
+            background-color: lightgoldenrodyellow;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 5px 0;
+            text-align: center;
+        }
     </style>
-  </head>
+</head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div style="color: deepskyblue; font-weight: bold" class="container">
-        <h2 class="navbar-brand">Library Management System</h2>
+          <h2 class="navbar-brand">
+              <img src="booklogo.png" alt="Book Logo" style="height: 50px; margin-right: 0;">
+              Library Management SystemLibrary Management System
+          </h2>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="home.html">Home</a>
+            <a class="nav-link" href="home.html"><i class="fas fa-home"></i>Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="booklist.html">Book List</a>
+            <a class="nav-link" href="booklist.html"><i class="fas fa-book"></i>Book List</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="authorlist.html">Author List</a>
+            <a class="nav-link" href="authorlist.html"><i class="fas fa-user"></i>Author List</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="category.html">Category</a>
+            <a class="nav-link" href="category.html"><i class="fas fa-list"></i>Category</a>
           </li>
         </ul>
       </div>
     </nav>
-    <!--<div class="container mt-4">
-        <h2>Welcome to the Library Management System</h2>
-        <p>Select a tab to manage books, authors, and categories.</p>
-        <div id="content"></div>
-    </div>-->
-    <!-- Footer -->
+   
     <footer class="footer bg-light">
       <div class="container">
         <p>&copy; 2024 Library Management System By MMT &#128218;</p>
       </div>
     </footer>
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/dist/js/bootstrap.min.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

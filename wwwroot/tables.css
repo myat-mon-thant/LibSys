@@ -1,5 +1,5 @@
 .table-responsive {
-    max-height: 300px; /* Adjust as needed */
+    max-height: 400px; /* Adjust as needed */
     overflow-y: auto;
 }
 .table tbody {
@@ -13,24 +13,13 @@
 
 .table-bordered th,
 .table-bordered td {
-    border: 2px solid black !important;
+    border: 1px solid black !important;
 }
 
 .table thead th {
     position: sticky;
     top: 0;
-    background-color: #4682B4;
+    background-color: lightgoldenrodyellow;
     z-index: 1;
 }
 
-.btn-add {
-    background-color: white;
-    color: deepskyblue;
-    border-color: #007bff;
-}
-
-    .btn-add:hover {
-        background-color: skyblue;
-        color: white;
-        border-color: skyblue;
-    }

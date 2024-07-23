@@ -87,19 +87,7 @@ namespace Lib2.Controllers
                 return NotFound();
             }
 
-            /*// Check if the author and category exist
-            var author = await _context.Authors.FindAsync(bookDto.AuthorId);
-            if (author == null)
-            {
-                return BadRequest();
-            }
-
-            var category = await _context.Categories.FindAsync(bookDto.CategoryId);
-            if (category == null)
-            {
-                return BadRequest();
-            }
-*/
+            
             // Update the book object with the values from the bookDto
             book.Title = bookDto.Title;
             book.AuthorId = bookDto.AuthorId;
@@ -121,48 +109,100 @@ namespace Lib2.Controllers
 
         }
 
-       
-        [HttpPost]
-        public async Task<ActionResult<Book>> PostBook([FromBody] BookDto bookDto)
+
+        //[HttpPost]
+        //public async Task<ActionResult<Book>> PostBook([FromBody] BookDto bookDto)
+        //{
+
+
+        //    // Create the book entity
+        //    var book = new Book()
+        //    {
+        //        Title = bookDto.Title,
+        //        AuthorId = bookDto.AuthorId,
+        //        CategoryId = bookDto.CategoryId,
+        //        PublicationDate = bookDto.PublicationDate,
+        //        Price = bookDto.Price,
+        //        Status = "Active", // Set the default status
+        //        CreatedDate = DateTime.Now // Set the created date
+        //    };
+        //    Console.WriteLine("book", book);
+
+        //    _context.Books.Add(book);
+        //    await _context.SaveChangesAsync();
+
+        //    return Ok(
+        //        new ApiResponse<Book> 
+        //        { 
+        //            Success = true,
+        //            Message = "Books are created successfully.",
+        //            Data = book
+        //        });
+
+        //}
+
+
+        [HttpPost("{id}")]
+        public async Task<ActionResult<Book>> PostBook(int id,[FromBody] BookDto bookDto)
         {
-            /*if (bookDto == null)
-                
-            return BadRequest();*/
-
-            // Check if the author and category exist
-            /*var author = await _context.Authors.FindAsync(bookDto.AuthorId);
-            if (author == null)
-                return BadRequest();
-
-            var category = await _context.Categories.FindAsync(bookDto.CategoryId);
-            if (category == null)    
-                return BadRequest();*/
-            // Create the book entity
-            var book = new Book()
+            if(id == 0)
             {
-                Title = bookDto.Title,
-                AuthorId = bookDto.AuthorId,
-                CategoryId = bookDto.CategoryId,
-                PublicationDate = bookDto.PublicationDate,
-                Price = bookDto.Price,
-                Status = "Active", // Set the default status
-                CreatedDate = DateTime.Now // Set the created date
-            };
-            Console.WriteLine("book", book);
+                // Create the book entity
+                var book = new Book()
+                {
+                    Title = bookDto.Title,
+                    AuthorId = bookDto.AuthorId,
+                    CategoryId = bookDto.CategoryId,
+                    PublicationDate = bookDto.PublicationDate,
+                    Price = bookDto.Price,
+                   
+                };
+                Console.WriteLine("book", book);
 
-            _context.Books.Add(book);
-            await _context.SaveChangesAsync();
-           
-            return Ok(
-                new ApiResponse<Book> 
-                { 
+                _context.Books.Add(book);
+                await _context.SaveChangesAsync();
+
+                return Ok(
+                    new ApiResponse<Book>
+                    {
+                        Success = true,
+                        Message = "Books are created successfully.",
+                        Data = book
+                    });
+
+            }
+            else
+            {
+                // Find the book in the database
+                var book = await _context.Books.FindAsync(id);
+                if (book == null)
+                {
+                    return NotFound();
+                }
+
+
+                // Update the book object with the values from the bookDto
+                book.Title = bookDto.Title;
+                book.AuthorId = bookDto.AuthorId;
+                book.CategoryId = bookDto.CategoryId;
+                book.PublicationDate = bookDto.PublicationDate;
+                book.Price = bookDto.Price;
+                book.CreatedDate = DateTime.Now;
+                book.Status = "Edit";
+
+                // Update the book in the database
+                _context.Entry(book).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return Ok(new
+                {
                     Success = true,
-                    Message = "Books are created successfully.",
+                    Message = "Book updated successfully.",
                     Data = book
                 });
-            
-        }
+            }
 
+
+        }
 
         // DELETE: api/Books/5
         [HttpDelete("{id}")]

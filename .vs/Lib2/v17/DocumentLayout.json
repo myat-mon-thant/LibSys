@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "C:\\Library\\Lib2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\scripts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\scripts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\detail.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\detail.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\category.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\category.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\tables.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\tables.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\category.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\category.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\authorlist.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -23,32 +43,64 @@
       "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\booklist.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\category.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\category.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\author.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\author.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\authorlist.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\authorlist.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\assets\\utilities.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\assets\\utilities.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\index.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\index.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\booklogo.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
       "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\booklogo.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\dto\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:dto\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\editauthor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\editauthor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|c:\\library\\lib2\\wwwroot\\editauthor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{860D29BB-79AD-4156-8BFE-DDD1534A9ED4}|Lib2.csproj|solutionrelative:wwwroot\\editauthor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,11 +110,168 @@
       "DocumentGroups": [
         {
           "DockedWidth": 201,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Detail.css",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\Detail.css",
+              "RelativeDocumentMoniker": "wwwroot\\Detail.css",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\Detail.css",
+              "RelativeToolTip": "wwwroot\\Detail.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-23T09:13:53.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Author.css",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\Author.css",
+              "RelativeDocumentMoniker": "wwwroot\\Author.css",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\Author.css",
+              "RelativeToolTip": "wwwroot\\Author.css",
+              "ViewState": "AQIAABMAAAAAAAAAAAAuwC4AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-23T08:40:00.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Category.css",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\Category.css",
+              "RelativeDocumentMoniker": "wwwroot\\Category.css",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\Category.css",
+              "RelativeToolTip": "wwwroot\\Category.css",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAADcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-23T08:36:20.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "authorlist.jpg - Bitmap [1366x768, 24 bit, JPG]",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\authorlist.jpg",
+              "RelativeDocumentMoniker": "wwwroot\\authorlist.jpg",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\authorlist.jpg - Bitmap [1366x768, 24 bit, JPG]",
+              "RelativeToolTip": "wwwroot\\authorlist.jpg - Bitmap [1366x768, 24 bit, JPG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-07-23T07:59:43.77Z",
+              "EditorCaption": " - Bitmap [1366x768, 24 bit, JPG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "home.html",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\home.html",
+              "RelativeDocumentMoniker": "wwwroot\\home.html",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\home.html",
+              "RelativeToolTip": "wwwroot\\home.html",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACUAAAB0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-23T07:31:23.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "index.jpg - Bitmap [1366x768, 24 bit, JPG]",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\index.jpg",
+              "RelativeDocumentMoniker": "wwwroot\\index.jpg",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\index.jpg - Bitmap [1366x768, 24 bit, JPG]",
+              "RelativeToolTip": "wwwroot\\index.jpg - Bitmap [1366x768, 24 bit, JPG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-07-23T07:27:35.573Z",
+              "EditorCaption": " - Bitmap [1366x768, 24 bit, JPG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Utilities.scss",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\assets\\Utilities.scss",
+              "RelativeDocumentMoniker": "wwwroot\\assets\\Utilities.scss",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\assets\\Utilities.scss",
+              "RelativeToolTip": "wwwroot\\assets\\Utilities.scss",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
+              "WhenOpened": "2024-07-23T04:36:08.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "wwwroot\\index.html",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\index.html",
+              "RelativeToolTip": "wwwroot\\index.html",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-23T03:28:32.878Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "detail.html",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\detail.html",
+              "RelativeDocumentMoniker": "wwwroot\\detail.html",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\detail.html",
+              "RelativeToolTip": "wwwroot\\detail.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-23T02:54:15.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "tables.css",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\tables.css",
+              "RelativeDocumentMoniker": "wwwroot\\tables.css",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\tables.css",
+              "RelativeToolTip": "wwwroot\\tables.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-22T08:08:24.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "styles.css",
+              "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\styles.css",
+              "RelativeDocumentMoniker": "wwwroot\\styles.css",
+              "ToolTip": "C:\\Library\\Lib2\\wwwroot\\styles.css",
+              "RelativeToolTip": "wwwroot\\styles.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-22T08:07:54.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Author.cs",
+              "DocumentMoniker": "C:\\Library\\Lib2\\Models\\Author.cs",
+              "RelativeDocumentMoniker": "Models\\Author.cs",
+              "ToolTip": "C:\\Library\\Lib2\\Models\\Author.cs",
+              "RelativeToolTip": "Models\\Author.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:48:27.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Library\\Lib2\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "Models\\Book.cs",
+              "ToolTip": "C:\\Library\\Lib2\\Models\\Book.cs",
+              "RelativeToolTip": "Models\\Book.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAA5wBUAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:38:01.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\Library\\Lib2\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
@@ -70,25 +279,23 @@
               "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T06:29:42.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-22T06:29:42.737Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "authorlist.html",
               "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\authorlist.html",
               "RelativeDocumentMoniker": "wwwroot\\authorlist.html",
               "ToolTip": "C:\\Library\\Lib2\\wwwroot\\authorlist.html",
               "RelativeToolTip": "wwwroot\\authorlist.html",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAFcAAAAjAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABcAAAB2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-07-22T05:30:12.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-22T05:30:12.443Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 23,
               "Title": "CategoryDto.cs",
               "DocumentMoniker": "C:\\Library\\Lib2\\DTO\\CategoryDto.cs",
               "RelativeDocumentMoniker": "DTO\\CategoryDto.cs",
@@ -100,19 +307,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 19,
               "Title": "BookDto.cs",
               "DocumentMoniker": "C:\\Library\\Lib2\\DTO\\BookDto.cs",
               "RelativeDocumentMoniker": "DTO\\BookDto.cs",
               "ToolTip": "C:\\Library\\Lib2\\DTO\\BookDto.cs",
               "RelativeToolTip": "DTO\\BookDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-17T08:45:47.934Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "booklogo.jpg - Bitmap [1024x733, 24 bit, JPG]",
               "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\booklogo.jpg",
               "RelativeDocumentMoniker": "wwwroot\\booklogo.jpg",
@@ -124,32 +331,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 17,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "C:\\Library\\Lib2\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
               "ToolTip": "C:\\Library\\Lib2\\Controllers\\CategoriesController.cs",
               "RelativeToolTip": "Controllers\\CategoriesController.cs",
-              "ViewState": "AQIAAHsAAAAAAAAAAAAkwIoAAAA7AAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAYwD8AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T08:30:10.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T08:30:10.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 18,
               "Title": "BooksController.cs",
               "DocumentMoniker": "C:\\Library\\Lib2\\Controllers\\BooksController.cs",
               "RelativeDocumentMoniker": "Controllers\\BooksController.cs",
               "ToolTip": "C:\\Library\\Lib2\\Controllers\\BooksController.cs",
               "RelativeToolTip": "Controllers\\BooksController.cs",
-              "ViewState": "AQIAAH4AAAAAAAAAAAAowAAAAAAAAAAA",
+              "ViewState": "AQIAALoAAAAAAAAAAAAcwM4AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-17T08:29:14.974Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 24,
               "Title": "editAuthor.html",
               "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\editAuthor.html",
               "RelativeDocumentMoniker": "wwwroot\\editAuthor.html",
@@ -161,54 +367,51 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "AuthorsController.cs",
               "DocumentMoniker": "C:\\Library\\Lib2\\Controllers\\AuthorsController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthorsController.cs",
               "ToolTip": "C:\\Library\\Lib2\\Controllers\\AuthorsController.cs",
               "RelativeToolTip": "Controllers\\AuthorsController.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAwCAAAAAfAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAYwEgAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-17T08:08:37.961Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "booklist.html",
               "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\booklist.html",
               "RelativeDocumentMoniker": "wwwroot\\booklist.html",
               "ToolTip": "C:\\Library\\Lib2\\wwwroot\\booklist.html",
               "RelativeToolTip": "wwwroot\\booklist.html",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAFMAAABnAAAA",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAAAEwAAAB0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-07-17T05:16:36.442Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T05:16:36.442Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "scripts.js",
               "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\scripts.js",
               "RelativeDocumentMoniker": "wwwroot\\scripts.js",
               "ToolTip": "C:\\Library\\Lib2\\wwwroot\\scripts.js",
               "RelativeToolTip": "wwwroot\\scripts.js",
-              "ViewState": "AQIAAH4AAAAAAAAAAAAgwJEAAAAAAAAA",
+              "ViewState": "AQIAAOMBAAAAAAAAAAAnwNcBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-17T05:15:22.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T05:15:22.592Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "category.html",
               "DocumentMoniker": "C:\\Library\\Lib2\\wwwroot\\category.html",
               "RelativeDocumentMoniker": "wwwroot\\category.html",
               "ToolTip": "C:\\Library\\Lib2\\wwwroot\\category.html",
               "RelativeToolTip": "wwwroot\\category.html",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAAAwAAABJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAB0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-07-17T05:15:19.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T05:15:19.757Z"
             }
           ]
         }
